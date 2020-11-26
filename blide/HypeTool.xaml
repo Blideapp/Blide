@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="Blide.HypeTool"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Blide"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="615" d:DesignWidth="985">
+    <Grid>
+        <TextBox Name="Content" HorizontalAlignment="Left" Height="28" Margin="10,62,0,0" TextWrapping="Wrap" Text="put emote here" VerticalAlignment="Top" Width="339" Foreground="White" Background="#1b1c1f" FontSize="15" />
+        <TextBox Name="Channel" HorizontalAlignment="Left" Height="28" Margin="10,112,0,0" TextWrapping="Wrap" Text="twitch channel" VerticalAlignment="Top" Width="339" Foreground="White" Background="#1b1c1f" FontSize="15" />
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="557" Width="626" Foreground="White" FontSize="22" FontWeight="ExtraBlack" LineStackingStrategy="BlockLineHeight" LineHeight="50" Margin="532,38,-173,0"><Run Text="amount:"/><LineBreak/><Run Text="interval:"/><LineBreak/><Run Text="randomize interval:"/><LineBreak/><Run Text=""/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="557" Width="626" Foreground="LightGray" FontSize="12" FontWeight="SemiBold" LineStackingStrategy="BlockLineHeight" LineHeight="50" Margin="532,53,-173,0"><Run Text="duplicates the emotes in message"/><LineBreak/><Run Text="delay between each message"/><LineBreak/><Run Text="randomize delay by 20%"/></TextBlock>
+        <Label Content="Messages sent:" HorizontalAlignment="Left" Margin="528,201,0,0" VerticalAlignment="Top" Foreground="White" FontSize="22" FontWeight="ExtraBlack"/>
+        <Label Content="0000" Name="messageCounter" HorizontalAlignment="Left" Margin="774,201,0,0" VerticalAlignment="Top" Foreground="White" FontSize="22" FontWeight="ExtraBlack" HorizontalContentAlignment="Right" Width="70"/>
+        <local:ToggleButton x:Name="randomizeButton" HorizontalAlignment="Center" Height="30" Margin="745,156,100,429" VerticalAlignment="Center" Width="140" MouseLeftButtonDown="randomizeButton_MouseLeftButtonDown"/>
+        <TextBox x:Name="amountText" PreviewTextInput="NumberValidationTextBox" MaxLength="2"  HorizontalAlignment="Left" Height="28" Margin="815,58,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="70" Foreground="White" Background="#1b1c1f" FontSize="15" TextChanged="Content_Copy_TextChanged" HorizontalContentAlignment="Center" />
+        <TextBox x:Name="intervalText" PreviewTextInput="NumberValidationTextBox" MaxLength="2"  HorizontalAlignment="Left" Height="28" Margin="815,108,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="70" Foreground="White" Background="#1b1c1f" FontSize="15" TextChanged="Content_Copy_TextChanged" HorizontalContentAlignment="Center"/>
+        <Rectangle MouseLeftButtonDown="amountButtonAdd_MouseLeftButtonDown" Fill="#FF2196F3" HorizontalAlignment="Left" Height="18" Margin="789,63,0,0"  VerticalAlignment="Top" Width="18"/>
+        <Rectangle MouseLeftButtonDown="amountButtonDec_MouseLeftButtonDown" Fill="#FF2196F3" HorizontalAlignment="Left" Height="18" Margin="896,63,0,0"  VerticalAlignment="Top" Width="18"/>
+        <materialDesign:PackIcon Name="amountButtonAdd" Kind="Plus" Foreground="White" HorizontalAlignment="Left" Margin="786,58,0,0" VerticalAlignment="Top" Height="28" Width="24" MouseLeftButtonDown="amountButtonAdd_MouseLeftButtonDown"/>
+        <materialDesign:PackIcon Name="amountButtonDec"  Kind="Minus" Foreground="White" HorizontalAlignment="Left" Margin="893,58,0,0" VerticalAlignment="Top" Height="28" Width="24" RenderTransformOrigin="0.493,0.519" MouseLeftButtonDown="amountButtonDec_MouseLeftButtonDown"/>
+        <Rectangle MouseLeftButtonDown="intervalButtonAdd_MouseLeftButtonDown" Fill="#FF2196F3" HorizontalAlignment="Left" Height="18" Margin="789,114,0,0"  VerticalAlignment="Top" Width="18"/>
+        <Rectangle MouseLeftButtonDown="intervalButtonDec_MouseLeftButtonDown" Fill="#FF2196F3" HorizontalAlignment="Left" Height="18" Margin="896,114,0,0"  VerticalAlignment="Top" Width="18"/>
+        <materialDesign:PackIcon Name="intervalButtonAdd" Kind="Plus" Foreground="White" HorizontalAlignment="Left" Margin="786,109,0,0" VerticalAlignment="Top" Height="28" Width="24" MouseLeftButtonDown="intervalButtonAdd_MouseLeftButtonDown"/>
+        <materialDesign:PackIcon Name="intervalButtonDec"  Kind="Minus" Foreground="White" HorizontalAlignment="Left" Margin="893,109,0,0" VerticalAlignment="Top" Height="28" Width="24" RenderTransformOrigin="0.493,0.519" MouseLeftButtonDown="intervalButtonDec_MouseLeftButtonDown"/>
+        <Button Visibility="Visible" x:Name="startBot1" Click="startBot1_Click"  Margin="532,257,292,308" Content="Start" Height="50"/>
+
+
+
+    </Grid>
+</UserControl>

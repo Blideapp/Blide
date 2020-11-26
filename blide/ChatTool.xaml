@@ -1,0 +1,40 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Blide"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="Blide.ChatTool"
+             mc:Ignorable="d" 
+             d:DesignHeight="615" d:DesignWidth="985">
+    <Grid>
+        <Button Visibility="Visible" x:Name="btnOpenFile" Click="btnOpenFiles_Click" Margin="10,13,889,567" Content="Add" Height="Auto"/>
+        <Button Visibility="Visible" x:Name="startBot" Click="startBot_Click"  Margin="412,56,412,509" Content="Start" Height="50"/>
+        <ListBox Visibility="Visible" x:Name="lbFiles" Margin="10,100,609,10" Background="#1f1f21" Foreground="White" SelectionMode="Multiple"/>
+        <Button Visibility="Visible" x:Name="removeSelected" Click="removeButton_Click" Margin="101,13,798,567" Content="Remove" Height="Auto" />
+
+        <Rectangle Fill="#131314" HorizontalAlignment="Left" Height="46" Margin="10,54,0,0" VerticalAlignment="Top" Width="366"/>
+        <Label Content="files"  HorizontalAlignment="Left" Foreground="White" FontSize="22" FontWeight="SemiBold" Margin="44,56,0,0" VerticalAlignment="Top" Height="44" Width="368"/>
+
+        <ScrollViewer x:Name="Scroller" Margin="609,100,10,7" Background="#1f1f21" BorderBrush="White" BorderThickness="1" Visibility="Visible" >
+            <StackPanel CanHorizontallyScroll="True">
+                <ItemsControl ItemsSource="{Binding ConsoleOutput, Mode=OneWay}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding .}" Foreground="White" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+        <Rectangle Fill="#131314" HorizontalAlignment="Left" Height="46" Margin="609,54,0,0" VerticalAlignment="Top" Width="366"/>
+
+        <Label Content="console"  HorizontalAlignment="Left" Foreground="White" FontSize="22" FontWeight="SemiBold" Margin="648,55,-31,0" VerticalAlignment="Top" Height="44" Width="368"/>
+
+
+        <materialDesign:PackIcon Kind="TextSubject" Foreground="White" HorizontalAlignment="Left" Margin="603,59,0,0" VerticalAlignment="Top" Height="36" Width="49"/>
+        <materialDesign:PackIcon Kind="ContentCopy" Foreground="White" HorizontalAlignment="Left" Margin="14,54,0,0" VerticalAlignment="Top" Height="46" Width="29"/>
+
+
+    </Grid>
+</UserControl>

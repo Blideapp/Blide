@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Blide.Settings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Blide"
+             mc:Ignorable="d" 
+             d:DesignHeight="615" d:DesignWidth="985">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="99*"/>
+            <ColumnDefinition Width="886*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Visibility="Visible" Content="exit" HorizontalAlignment="Left" Margin="793.333,571,0,0" VerticalAlignment="Top" Width="84" Height="32" Name="SettingsbuttonExit" Click="buttonCancel_Click" Grid.Column="1"/>
+        <Button Visibility="Visible" Content="apply" HorizontalAlignment="Left" Margin="703.333,571,0,0" VerticalAlignment="Top" Width="84" Height="32" Name="SettingsbuttonApply" Click="buttonApply_Click" Grid.Column="1"/>
+        <Button Visibility="Visible" Content="okay" HorizontalAlignment="Left" Margin="613.333,571,0,0" VerticalAlignment="Top" Width="84" Height="32" Name="SettingsbuttonOkay" Click="buttonOkay_Click" Grid.Column="1"/>
+        <Label Content="get oauth token here" HorizontalAlignment="Left" Margin="477.333,575,0,0" VerticalAlignment="Top" Height="28" Width="132" FontSize="13" FontWeight="SemiBold" Foreground="White" MouseLeftButtonDown="Label_MouseLeftButtonDown" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="557" Width="626" Foreground="White" FontSize="22" FontWeight="ExtraBlack" LineStackingStrategy="BlockLineHeight" LineHeight="50" Grid.ColumnSpan="2" Margin="7,0,0,0"><Run Text="Username:"/><LineBreak/><Run Text="OAuth key:"/><LineBreak/><Run Text="Channel:"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run Text="Command prefix:"/><LineBreak/><Run Text="Delay in ms:"/><LineBreak/><Run Text="Send joinmessage:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="557" Width="626" Foreground="LightGray" FontSize="12" FontWeight="SemiBold" LineStackingStrategy="BlockLineHeight" LineHeight="50" Grid.ColumnSpan="2" Margin="6,16,0,0"><Run Text="your twitch username"/><LineBreak/><Run Text="authentication key used by twitch"/><LineBreak/><Run Text="the streamers channel"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run Text="e.g.: /ban, /unban  "/><LineBreak/><Run Text="Delay between each command"/><LineBreak/><Run Text="tool will send a message in chat when used"/></TextBlock>
+
+        <TextBox Name="SettingsTwitchName" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="193,20,0,0" TextWrapping="Wrap" Text="TwitchName" VerticalAlignment="Top" Width="339" Foreground="White" Background="#1b1c1f" FontSize="15" />
+        <TextBox Name="SettingsTwitchOAuth" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="193,70,0,0" TextWrapping="Wrap" Text="oauth:kagewh1234xxxxxxxxxxxxxxxxxxxx" VerticalAlignment="Top" Width="339" Foreground="White" Background="#1b1c1f" FontSize="15" />
+        <TextBox Name="SettingsTwitchChannel" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="193,120,0,0" TextWrapping="Wrap" Text="Channel name" VerticalAlignment="Top" Width="339" Foreground="White" Background="#1b1c1f" FontSize="15" />
+        <TextBox Name="SettingsTwitchPrefix" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="193,319,0,0" TextWrapping="Wrap" Text="/ban " VerticalAlignment="Top" Width="339" Foreground="White" Background="#1b1c1f" FontSize="15" />
+        <TextBox Name="SettingsTwitchDelay" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="193,369,0,0" TextWrapping="Wrap" Text="300" VerticalAlignment="Top" Width="339" Foreground="White" Background="#1b1c1f" FontSize="15" />
+        <Label Content="special version für Ella" HorizontalAlignment="Left" Foreground="White" FontSize="22" FontWeight="ExtraBlack" Margin="635,0,0,0" VerticalAlignment="Top" Height="65" Width="251" Grid.Column="1"/>
+        <Label Content="Open source libraries used:&#xA;Twitchlib&#xA;Newtonsoft.Json&#xA;WebSocketSharp-NonPreRelease&#xA;libgit2sharp&#xD;&#xA;Squirrel.windows&#xD;&#xA;&#xD;&#xA;special thanks to:&#xD;&#xA;jcmt.dev&#xA;&#xA;" HorizontalAlignment="Left" Foreground="LightGray" FontSize="12" FontWeight="SemiBold" Margin="635,28,0,0" VerticalAlignment="Top" Height="160" Width="216" Grid.Column="1"/>
+
+
+        <local:ToggleButton x:Name="Bu" HorizontalAlignment="Center" Height="31" Margin="146,417,600,167" VerticalAlignment="Center" Width="140" MouseLeftButtonDown="Bu_MouseLeftButtonDown" Grid.Column="1"/>
+
+
+    </Grid>
+
+</UserControl>

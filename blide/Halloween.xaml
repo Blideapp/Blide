@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Blide.Halloween"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Blide"
+             mc:Ignorable="d"              
+             d:DesignHeight="615" d:DesignWidth="985">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="558" Width="626" Foreground="White" FontSize="22" FontWeight="ExtraBlack" LineStackingStrategy="BlockLineHeight" LineHeight="50" Margin="41,74,0,-17"><Run Text="Delay:"/><LineBreak/><Run Text="file path:"/><LineBreak/><Run Text="avoid duplicates:"/><LineBreak/><Run Text="volume:"/><LineBreak/><Run Text=""/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="556" Width="626" Foreground="LightGray" FontSize="12" FontWeight="SemiBold" LineStackingStrategy="BlockLineHeight" LineHeight="50" Margin="42,92,0,-33"><Run Text="in minutes&#x9;                 &#x9;&#x9;&#x9;             min &#x9;               &#x9;           max"/><LineBreak/><Run Text="folder with soundfiles"/><LineBreak/><Run Text="doesnt play the same sound twice if possible"/><LineBreak/><Run Text="Wehe du machst das leiser! "/><LineBreak/><Run/></TextBlock>
+
+        <TextBox x:Name="maxText" PreviewTextInput="NumberValidationTextBox" MaxLength="2"  HorizontalAlignment="Left" Height="28" Margin="534,92,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="70" Foreground="White" Background="#1b1c1f" FontSize="15" TextChanged="Content_Copy_TextChanged" HorizontalContentAlignment="Center" />
+        <TextBox x:Name="minText" PreviewTextInput="NumberValidationTextBox" MaxLength="2"  HorizontalAlignment="Left" Height="28" Margin="346,92,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="70" Foreground="White" Background="#1b1c1f" FontSize="15" TextChanged="Content_Copy_TextChanged" HorizontalContentAlignment="Center"/>
+        <Rectangle MouseLeftButtonDown="maxButtonAdd_MouseLeftButtonDown" Fill="#FF2196F3" HorizontalAlignment="Left" Height="18" Margin="508,98,0,0"  VerticalAlignment="Top" Width="18"/>
+        <Rectangle MouseLeftButtonDown="maxButtonDec_MouseLeftButtonDown" Fill="#FF2196F3" HorizontalAlignment="Left" Height="18" Margin="615,98,0,0"  VerticalAlignment="Top" Width="18"/>
+        <materialDesign:PackIcon Name="maxButtonAdd" Kind="Plus" Foreground="White" HorizontalAlignment="Left" Margin="505,92,0,0" VerticalAlignment="Top" Height="28" Width="24" MouseLeftButtonDown="maxButtonAdd_MouseLeftButtonDown"/>
+        <materialDesign:PackIcon Name="maxButtonDec"  Kind="Minus" Foreground="White" HorizontalAlignment="Left" Margin="612,92,0,0" VerticalAlignment="Top" Height="28" Width="24" RenderTransformOrigin="0.493,0.519" MouseLeftButtonDown="maxButtonDec_MouseLeftButtonDown"/>
+        <Rectangle MouseLeftButtonDown="minButtonAdd_MouseLeftButtonDown" Fill="#FF2196F3" HorizontalAlignment="Left" Height="18" Margin="320,98,0,0"  VerticalAlignment="Top" Width="18"/>
+        <Rectangle MouseLeftButtonDown="minButtonDec_MouseLeftButtonDown" Fill="#FF2196F3" HorizontalAlignment="Left" Height="18" Margin="427,98,0,0"  VerticalAlignment="Top" Width="18"/>
+        <materialDesign:PackIcon Name="minButtonAdd" Kind="Plus" Foreground="White" HorizontalAlignment="Left" Margin="317,92,0,0" VerticalAlignment="Top" Height="28" Width="24" MouseLeftButtonDown="minButtonAdd_MouseLeftButtonDown"/>
+        <materialDesign:PackIcon Name="minButtonDec"  Kind="Minus" Foreground="White" HorizontalAlignment="Left" Margin="424,92,0,0" VerticalAlignment="Top" Height="28" Width="24" RenderTransformOrigin="0.493,0.519" MouseLeftButtonDown="minButtonDec_MouseLeftButtonDown"/>
+        <Button Content="choose folder" HorizontalAlignment="Left" Margin="509,142,0,0" VerticalAlignment="Top" Width="123" Height="26" x:Name="chooseFolder" Click="chooseFolder_Click"/>
+        <local:ToggleButton x:Name="avoidButton" HorizontalAlignment="Center" Height="30" Margin="501,190,344,395" VerticalAlignment="Center" Width="140" MouseLeftButtonDown="avoidButton_MouseLeftButtonDown"/>
+        <Button Visibility="Visible" x:Name="startButton" Click="startButton_Click"  Margin="42,26,783,539" Content="Start" Height="50"/>
+
+        <TextBox x:Name="volumeText" PreviewTextInput="NumberValidationTextBox" MaxLength="3"  HorizontalAlignment="Left" Height="28" Margin="534,242,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="70" Foreground="White" Background="#1b1c1f" FontSize="15" TextChanged="Content_Copy_TextChanged" HorizontalContentAlignment="Center" />
+        <Rectangle MouseLeftButtonDown="volumeButtonDec_MouseLeftButtonDown" Fill="#FF2196F3" HorizontalAlignment="Left" Height="18" Margin="615,247,0,0"  VerticalAlignment="Top" Width="18"/>
+        <Rectangle MouseLeftButtonDown="volumeButtonAdd_MouseLeftButtonDown" Fill="#FF2196F3" HorizontalAlignment="Left" Height="18" Margin="508,247,0,0"  VerticalAlignment="Top" Width="18"/>
+        <materialDesign:PackIcon Name="volumeButtonAdd" Kind="Plus" Foreground="White" HorizontalAlignment="Left" Margin="505,242,0,0" VerticalAlignment="Top" Height="28" Width="24" MouseLeftButtonDown="volumeButtonAdd_MouseLeftButtonDown"/>
+        <materialDesign:PackIcon Name="volumeButtonDec"  Kind="Minus" Foreground="White" HorizontalAlignment="Left" Margin="612,242,0,0" VerticalAlignment="Top" Height="28" Width="24" RenderTransformOrigin="0.493,0.519" MouseLeftButtonDown="volumeButtonDec_MouseLeftButtonDown"/>
+        <Button Content="stop sound" HorizontalAlignment="Left" Margin="838,561,0,0" VerticalAlignment="Top" Width="123" Height="26" x:Name="stopSound" Click="stopSound_Click"/>
+        <Button Content="test sound" HorizontalAlignment="Left" Margin="697,561,0,0" VerticalAlignment="Top" Width="123" Height="26" x:Name="testSound" Click="testSound_Click"/>
+
+
+    </Grid>
+</UserControl>

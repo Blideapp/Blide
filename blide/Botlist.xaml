@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Blide.Botlist"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Blide"
+             mc:Ignorable="d" 
+             d:DesignHeight="615" d:DesignWidth="985">
+
+    <Grid>
+
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="171" Width="410" Foreground="White" FontSize="22" FontWeight="ExtraBlack" LineStackingStrategy="BlockLineHeight" LineHeight="50" Margin="575,0,0,0"><Run Text="use timestamps"/><LineBreak/><Run Text="copied from chatterino"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="557" Width="410" Foreground="LightGray" FontSize="12" FontWeight="SemiBold" LineStackingStrategy="BlockLineHeight" LineHeight="50" Margin="575,16,0,0"><Run Text="timestamps in twitch chat are enabled"/><LineBreak/><Run Text="chat messages were copied from the chatterino application"/></TextBlock>
+        <local:ToggleButton x:Name="Bu2" HorizontalAlignment="Center" Height="31" Margin="863,69,-18,515" VerticalAlignment="Center" Width="140" MouseLeftButtonDown="Bu2_MouseLeftButtonDown" RenderTransformOrigin="0.529,0.968"/>
+        <local:ToggleButton x:Name="Bu1" HorizontalAlignment="Center" Height="31" Margin="863,19,-18,565" VerticalAlignment="Center" Width="140" MouseLeftButtonDown="Bu1_MouseLeftButtonDown"/>
+        <Button Visibility="Visible" Content="extract usernames" HorizontalAlignment="Left" Margin="575,232,0,0" VerticalAlignment="Top" Width="149" Height="32" Name="ExtractButton" Click="ExtractButton_Click"/>
+        <Button Visibility="Visible" Content="save as" HorizontalAlignment="Left" Margin="575,269,0,0" VerticalAlignment="Top" Width="148" Height="32" x:Name="SaveAsButton" Click="SaveAsButton_Click"/>
+        <Button Visibility="Visible" Content="load clipboard" HorizontalAlignment="Left" Margin="576,195,0,0" VerticalAlignment="Top" Width="148" Height="32" x:Name="LoadClipboardButton" Click="LoadClipboardButton_Click"/>
+
+        <TextBox Name="usernames"
+         AcceptsReturn="True" AcceptsTab="True"
+         Margin="5,5,433,5" TextWrapping="NoWrap"
+         VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Foreground="White" Height="600" Width="550" Background="#1f1f21"/>
+        <Button Visibility="Visible" Content="replace" HorizontalAlignment="Left" Margin="576,129,0,0" VerticalAlignment="Top" Width="148" Height="32" x:Name="replaceButton" Click="replaceButton_Click"/>
+        <TextBox x:Name="toReplace" Background="#1f1f21" Foreground="White" AcceptsReturn="False" AcceptsTab="False" HorizontalAlignment="Left" Height="24" Margin="750,118,0,0" TextWrapping="Wrap" Text="text to replace" VerticalAlignment="Top" Width="225"/>
+        <TextBox x:Name="replacement" Background="#1f1f21" Foreground="White" AcceptsReturn="False" AcceptsTab="False" HorizontalAlignment="Left" Height="24" Margin="750,146,0,0" TextWrapping="Wrap" Text="replacement" VerticalAlignment="Top" Width="225"/>
+        <Button Visibility="Visible" Content="save and import" HorizontalAlignment="Left" Margin="576,306,0,0" VerticalAlignment="Top" Width="148" Height="32" x:Name="SaveImportButton" Click="SaveImportButton_Click"/>
+
+
+    </Grid>
+</UserControl>

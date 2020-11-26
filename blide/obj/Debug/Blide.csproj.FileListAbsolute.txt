@@ -1,0 +1,204 @@
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\DropDownMenu.exe.config
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\DropDownMenu.exe
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\DropDownMenu.pdb
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\MaterialDesignColors.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\MaterialDesignThemes.Wpf.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\MaterialDesignColors.pdb
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\MaterialDesignThemes.Wpf.pdb
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\MaterialDesignThemes.Wpf.xml
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\Blide 2.0.3.csprojAssemblyReference.cache
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\MainWindow.g.cs
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\UserControlMenuItem.g.cs
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\App.g.cs
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\DropDownMenu_MarkupCompile.cache
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\DropDownMenu_MarkupCompile.lref
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\App.baml
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\MainWindow.baml
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\UserControlMenuItem.baml
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\DropDownMenu.g.resources
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\DropDownMenu.Properties.Resources.resources
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\Blide 2.0.3.csproj.GenerateResource.cache
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\Blide 2.0.3.csproj.CoreCompileInputs.cache
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\Blide 2.0.3.csproj.CopyComplete
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\DropDownMenu.exe
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\DropDownMenu.pdb
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\Settings.g.cs
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\Settings.baml
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\Botlist.g.cs
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\Botlist.baml
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\ToggleButton.g.cs
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\ToggleButton.baml
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\LoadingScreen.g.cs
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\LoadingScreen.baml
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\ChatTool.g.cs
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\obj\Debug\ChatTool.baml
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\ModernWpf.Controls.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\ModernWpf.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\System.ValueTuple.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\ModernWpf.xml
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\ModernWpf.Controls.xml
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\System.ValueTuple.xml
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\cs\ModernWpf.resources.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\de\ModernWpf.resources.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\es\ModernWpf.resources.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\fa\ModernWpf.resources.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\fr\ModernWpf.resources.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\it\ModernWpf.resources.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\ja\ModernWpf.resources.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\ko\ModernWpf.resources.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\pl\ModernWpf.resources.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\pt-BR\ModernWpf.resources.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\ru\ModernWpf.resources.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\tr\ModernWpf.resources.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\zh-Hans\ModernWpf.resources.dll
+G:\Programme\github repository\Blide 2.0.3\DropDownMenu\bin\Debug\zh-Hant\ModernWpf.resources.dll
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\Blide.csprojAssemblyReference.cache
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\ChatTool.g.cs
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\Botlist.g.cs
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\LoadingScreen.g.cs
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\MainWindow.g.cs
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\Settings.g.cs
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\ToggleButton.g.cs
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\UserControlMenuItem.g.cs
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\App.g.cs
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\GeneratedInternalTypeHelper.g.cs
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\DropDownMenu_MarkupCompile.cache
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\DropDownMenu_MarkupCompile.lref
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\App.baml
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\ChatTool.baml
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\Botlist.baml
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\LoadingScreen.baml
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\MainWindow.baml
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\Settings.baml
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\ToggleButton.baml
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\UserControlMenuItem.baml
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\DropDownMenu.g.resources
+G:\Programme\github repository\Blide\DropDownMenu\obj\Debug\DropDownMenu.pdb
+G:\Programme\github repository\Blide\Blide\obj\Debug\Blide.csprojAssemblyReference.cache
+G:\Programme\github repository\Blide\Blide\obj\Debug\ChatTool.g.cs
+G:\Programme\github repository\Blide\Blide\obj\Debug\Botlist.g.cs
+G:\Programme\github repository\Blide\Blide\obj\Debug\LoadingScreen.g.cs
+G:\Programme\github repository\Blide\Blide\obj\Debug\MainWindow.g.cs
+G:\Programme\github repository\Blide\Blide\obj\Debug\Settings.g.cs
+G:\Programme\github repository\Blide\Blide\obj\Debug\ToggleButton.g.cs
+G:\Programme\github repository\Blide\Blide\obj\Debug\UserControlMenuItem.g.cs
+G:\Programme\github repository\Blide\Blide\obj\Debug\App.g.cs
+G:\Programme\github repository\Blide\Blide\obj\Debug\GeneratedInternalTypeHelper.g.cs
+G:\Programme\github repository\Blide\Blide\obj\Debug\App.baml
+G:\Programme\github repository\Blide\Blide\obj\Debug\ChatTool.baml
+G:\Programme\github repository\Blide\Blide\obj\Debug\Botlist.baml
+G:\Programme\github repository\Blide\Blide\obj\Debug\LoadingScreen.baml
+G:\Programme\github repository\Blide\Blide\obj\Debug\MainWindow.baml
+G:\Programme\github repository\Blide\Blide\obj\Debug\Settings.baml
+G:\Programme\github repository\Blide\Blide\obj\Debug\ToggleButton.baml
+G:\Programme\github repository\Blide\Blide\obj\Debug\UserControlMenuItem.baml
+G:\Programme\github repository\Blide\Blide\bin\Debug\DeltaCompressionDotNet.dll
+G:\Programme\github repository\Blide\Blide\bin\Debug\DeltaCompressionDotNet.MsDelta.dll
+G:\Programme\github repository\Blide\Blide\bin\Debug\DeltaCompressionDotNet.PatchApi.dll
+G:\Programme\github repository\Blide\Blide\bin\Debug\MaterialDesignColors.dll
+G:\Programme\github repository\Blide\Blide\bin\Debug\MaterialDesignThemes.Wpf.dll
+G:\Programme\github repository\Blide\Blide\bin\Debug\Mono.Cecil.dll
+G:\Programme\github repository\Blide\Blide\bin\Debug\Mono.Cecil.Mdb.dll
+G:\Programme\github repository\Blide\Blide\bin\Debug\Mono.Cecil.Pdb.dll
+G:\Programme\github repository\Blide\Blide\bin\Debug\Mono.Cecil.Rocks.dll
+G:\Programme\github repository\Blide\Blide\bin\Debug\NuGet.Squirrel.dll
+G:\Programme\github repository\Blide\Blide\bin\Debug\SharpCompress.dll
+G:\Programme\github repository\Blide\Blide\bin\Debug\Squirrel.dll
+G:\Programme\github repository\Blide\Blide\bin\Debug\System.ValueTuple.dll
+G:\Programme\github repository\Blide\Blide\bin\Debug\MaterialDesignColors.pdb
+G:\Programme\github repository\Blide\Blide\bin\Debug\MaterialDesignThemes.Wpf.pdb
+G:\Programme\github repository\Blide\Blide\bin\Debug\MaterialDesignThemes.Wpf.xml
+G:\Programme\github repository\Blide\Blide\bin\Debug\Mono.Cecil.pdb
+G:\Programme\github repository\Blide\Blide\bin\Debug\Mono.Cecil.Mdb.pdb
+G:\Programme\github repository\Blide\Blide\bin\Debug\Mono.Cecil.Pdb.pdb
+G:\Programme\github repository\Blide\Blide\bin\Debug\Mono.Cecil.Rocks.pdb
+G:\Programme\github repository\Blide\Blide\bin\Debug\NuGet.Squirrel.pdb
+G:\Programme\github repository\Blide\Blide\bin\Debug\Squirrel.pdb
+G:\Programme\github repository\Blide\Blide\bin\Debug\System.ValueTuple.xml
+G:\Programme\github repository\Blide\Blide\obj\Debug\Blide.csproj.GenerateResource.cache
+G:\Programme\github repository\Blide\Blide\obj\Debug\Blide.csproj.CoreCompileInputs.cache
+G:\Programme\github repository\Blide\Blide\obj\Debug\Blide.csproj.CopyComplete
+G:\Programme\github repository\Blide\Blide\bin\Debug\Blide.exe.config
+G:\Programme\github repository\Blide\Blide\bin\Debug\Blide.exe
+G:\Programme\github repository\Blide\Blide\bin\Debug\Blide.pdb
+G:\Programme\github repository\Blide\Blide\obj\Debug\Blide_MarkupCompile.cache
+G:\Programme\github repository\Blide\Blide\obj\Debug\Blide_MarkupCompile.lref
+G:\Programme\github repository\Blide\Blide\obj\Debug\Blide.g.resources
+G:\Programme\github repository\Blide\Blide\obj\Debug\Blide.Properties.Resources.resources
+G:\Programme\github repository\Blide\Blide\obj\Debug\Blide.exe
+G:\Programme\github repository\Blide\Blide\obj\Debug\Blide.pdb
+E:\Programme\github repository\blide\Blide\bin\Debug\lib\win32\x64\git2-dd2d538.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\lib\win32\x64\git2-dd2d538.pdb
+E:\Programme\github repository\blide\Blide\bin\Debug\lib\win32\x86\git2-dd2d538.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\lib\win32\x86\git2-dd2d538.pdb
+E:\Programme\github repository\blide\Blide\bin\Debug\lib\osx\libgit2-dd2d538.dylib
+E:\Programme\github repository\blide\Blide\bin\Debug\lib\linux\x86_64\libgit2-dd2d538.so
+E:\Programme\github repository\blide\Blide\bin\Debug\LibGit2Sharp.dll.config
+E:\Programme\github repository\blide\Blide\bin\Debug\Blide.exe.config
+E:\Programme\github repository\blide\Blide\bin\Debug\Blide.exe
+E:\Programme\github repository\blide\Blide\bin\Debug\Blide.pdb
+E:\Programme\github repository\blide\Blide\bin\Debug\DeltaCompressionDotNet.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\DeltaCompressionDotNet.MsDelta.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\DeltaCompressionDotNet.PatchApi.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\LibGit2Sharp.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\MaterialDesignColors.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\MaterialDesignThemes.Wpf.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\Microsoft.WindowsAPICodePack.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\Microsoft.WindowsAPICodePack.Sensors.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\Mono.Cecil.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\Mono.Cecil.Mdb.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\Mono.Cecil.Pdb.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\Mono.Cecil.Rocks.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\NAudio.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\NuGet.Squirrel.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\SharpCompress.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\Squirrel.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\System.ValueTuple.dll
+E:\Programme\github repository\blide\Blide\bin\Debug\LibGit2Sharp.pdb
+E:\Programme\github repository\blide\Blide\bin\Debug\LibGit2Sharp.xml
+E:\Programme\github repository\blide\Blide\bin\Debug\MaterialDesignColors.pdb
+E:\Programme\github repository\blide\Blide\bin\Debug\MaterialDesignThemes.Wpf.pdb
+E:\Programme\github repository\blide\Blide\bin\Debug\MaterialDesignThemes.Wpf.xml
+E:\Programme\github repository\blide\Blide\bin\Debug\Mono.Cecil.pdb
+E:\Programme\github repository\blide\Blide\bin\Debug\Mono.Cecil.Mdb.pdb
+E:\Programme\github repository\blide\Blide\bin\Debug\Mono.Cecil.Pdb.pdb
+E:\Programme\github repository\blide\Blide\bin\Debug\Mono.Cecil.Rocks.pdb
+E:\Programme\github repository\blide\Blide\bin\Debug\NAudio.xml
+E:\Programme\github repository\blide\Blide\bin\Debug\NuGet.Squirrel.pdb
+E:\Programme\github repository\blide\Blide\bin\Debug\Squirrel.pdb
+E:\Programme\github repository\blide\Blide\bin\Debug\System.ValueTuple.xml
+E:\Programme\github repository\blide\Blide\obj\Debug\Blide.csprojAssemblyReference.cache
+E:\Programme\github repository\blide\Blide\obj\Debug\ChatTool.g.cs
+E:\Programme\github repository\blide\Blide\obj\Debug\Botlist.g.cs
+E:\Programme\github repository\blide\Blide\obj\Debug\Halloween.g.cs
+E:\Programme\github repository\blide\Blide\obj\Debug\HypeTool.g.cs
+E:\Programme\github repository\blide\Blide\obj\Debug\LoadingScreen.g.cs
+E:\Programme\github repository\blide\Blide\obj\Debug\MainWindow.g.cs
+E:\Programme\github repository\blide\Blide\obj\Debug\Settings.g.cs
+E:\Programme\github repository\blide\Blide\obj\Debug\ToggleButton.g.cs
+E:\Programme\github repository\blide\Blide\obj\Debug\UserControlMenuItem.g.cs
+E:\Programme\github repository\blide\Blide\obj\Debug\App.g.cs
+E:\Programme\github repository\blide\Blide\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Programme\github repository\blide\Blide\obj\Debug\Blide_MarkupCompile.cache
+E:\Programme\github repository\blide\Blide\obj\Debug\Blide_MarkupCompile.lref
+E:\Programme\github repository\blide\Blide\obj\Debug\App.baml
+E:\Programme\github repository\blide\Blide\obj\Debug\ChatTool.baml
+E:\Programme\github repository\blide\Blide\obj\Debug\Botlist.baml
+E:\Programme\github repository\blide\Blide\obj\Debug\Halloween.baml
+E:\Programme\github repository\blide\Blide\obj\Debug\HypeTool.baml
+E:\Programme\github repository\blide\Blide\obj\Debug\LoadingScreen.baml
+E:\Programme\github repository\blide\Blide\obj\Debug\MainWindow.baml
+E:\Programme\github repository\blide\Blide\obj\Debug\Settings.baml
+E:\Programme\github repository\blide\Blide\obj\Debug\ToggleButton.baml
+E:\Programme\github repository\blide\Blide\obj\Debug\UserControlMenuItem.baml
+E:\Programme\github repository\blide\Blide\obj\Debug\Blide.g.resources
+E:\Programme\github repository\blide\Blide\obj\Debug\Blide.Properties.Resources.resources
+E:\Programme\github repository\blide\Blide\obj\Debug\Blide.csproj.GenerateResource.cache
+E:\Programme\github repository\blide\Blide\obj\Debug\Blide.csproj.CoreCompileInputs.cache
+E:\Programme\github repository\blide\Blide\obj\Debug\Blide.csproj.CopyComplete
+E:\Programme\github repository\blide\Blide\obj\Debug\Blide.exe
+E:\Programme\github repository\blide\Blide\obj\Debug\Blide.pdb
