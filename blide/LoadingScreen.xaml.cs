@@ -30,16 +30,16 @@ namespace Blide
         public async void loadingScreen()
         {
             LoadingBarRectangle.Width = 1;
-            await Task.Delay(187);
+            await Task.Delay(69);
             LoadingBarRectangle.Width = 69;
             await Task.Delay(187);
             LoadingBarRectangle.Width = 154;
-            await Task.Delay(123);
+            await Task.Delay(10);
             LoadingBarRectangle.Width = 200;
             await Task.Delay(69);
             LoadingBarRectangle.Width = 239;
             await Task.Delay(69);
-            wnd.showChatTool();
+            wnd.showLogin();
         }
     }
 }

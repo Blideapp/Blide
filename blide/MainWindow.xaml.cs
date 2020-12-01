@@ -132,12 +132,40 @@ namespace Blide
             StackPanelMain.Children.Clear();
             StackPanelMain.Children.Add(new Halloween());
         }
+        public void showLogin()
+        {
+            StackPanelMain.Children.Clear();
+            StackPanelMain.Children.Add(new LoginScreen());
+        }
+
+        public void showSignup()
+        {
+            StackPanelMain.Children.Clear();
+            StackPanelMain.Children.Add(new SignUpScreen());
+        }
+
         public void import(string path)
         {
             StackPanelMain.Children.Clear();
             StackPanelMain.Children.Add(Chattool);
             Chattool.addFile(path);
         }
-        
+
+
+
+        //firebase
+        public void Login(string email, string password)
+        {
+            
+        }
+        public void Signup(string email, string username , string password)
+        {
+
+        }
+
+
+
+
+
     }
 }

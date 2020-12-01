@@ -166,7 +166,37 @@ namespace Blide
 
             UpdateMessageCount();
 
-            await Task.Delay(2* 60 * 1000);
+            
+
+            //countdown
+
+            int minutes = 0;
+            int seconds = 0;
+            for(int i = 0; i < 120; i++)
+            {
+                await Task.Delay(1000);
+                if (seconds >= 59)
+                {
+                    seconds = 0;
+                    minutes++;
+                }
+                else
+                {
+                    seconds++;
+                }
+
+                string secondsstring = seconds + "";
+                if(seconds < 10)
+                {
+                    secondsstring = "0" + secondsstring;
+                }
+
+                timerLabel.Content = minutes + ":" + secondsstring;
+
+            }
+
+
+
             canRun = false;
             stop();
             startStatus = false;
