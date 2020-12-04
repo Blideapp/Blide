@@ -8,6 +8,13 @@ using LibGit2Sharp;
 using System.IO;
 using System.Linq;
 using System;
+using FireSharp.Config;
+using FireSharp.Response;
+using FireSharp.Interfaces;
+using FireSharp.Extensions;
+using FireSharp.Exceptions;
+using FireSharp.EventStreaming;
+
 
 namespace Blide
 {
@@ -16,7 +23,13 @@ namespace Blide
     {
         ChatTool Chattool = new ChatTool();
         HypeTool Hypetool = new HypeTool();
-        
+        private bool LoggedIn = false;
+
+        IFirebaseConfig firebaseconfig = new FirebaseConfig
+        {
+            AuthSecret = "",
+            BasePath = ""
+        }; 
 
         public MainWindow()
         {
@@ -89,8 +102,6 @@ namespace Blide
 
         }
 
-
-
         internal void SwitchScreen(object sender)
         {
             var screen = ((UserControl)sender);
@@ -104,51 +115,74 @@ namespace Blide
         }
         public void showChatTool()
         {
+            if (LoggedIn) { 
             StackPanelMain.Children.Clear();
             StackPanelMain.Children.Add(Chattool);
+            }
         }
         public void showBotList()
         {
-            StackPanelMain.Children.Clear();
-            StackPanelMain.Children.Add(new Botlist());
+            if (LoggedIn)
+            {
+                StackPanelMain.Children.Clear();
+                StackPanelMain.Children.Add(new Botlist());
+            }
         }
         public void showLoading()
-        {
-            StackPanelMain.Children.Clear();
-            StackPanelMain.Children.Add(new LoadingScreen());
-        }
+            {
+                if (LoggedIn)
+                {
+                    StackPanelMain.Children.Clear();
+                    StackPanelMain.Children.Add(new LoadingScreen());
+                } }
         public void showSettings()
-        {
-            StackPanelMain.Children.Clear();
-            StackPanelMain.Children.Add(new Settings());
-        }
+            {
+                if (LoggedIn)
+                {
+                    StackPanelMain.Children.Clear();
+                    StackPanelMain.Children.Add(new Settings());
+                } }
         public void showHypeTool()
-        {
-            StackPanelMain.Children.Clear();
-            StackPanelMain.Children.Add(Hypetool);
-        }
+            {
+                if (LoggedIn)
+                {
+                    StackPanelMain.Children.Clear();
+                    StackPanelMain.Children.Add(Hypetool);
+                } }
         public void showHalloween()
         {
-            StackPanelMain.Children.Clear();
-            StackPanelMain.Children.Add(new Halloween());
+            if (LoggedIn)
+            {
+                StackPanelMain.Children.Clear();
+                StackPanelMain.Children.Add(new Halloween());
+            }
         }
         public void showLogin()
         {
-            StackPanelMain.Children.Clear();
-            StackPanelMain.Children.Add(new LoginScreen());
+            if (LoggedIn)
+            {
+                StackPanelMain.Children.Clear();
+                StackPanelMain.Children.Add(new LoginScreen());
+            }
         }
 
         public void showSignup()
         {
-            StackPanelMain.Children.Clear();
-            StackPanelMain.Children.Add(new SignUpScreen());
+            if (LoggedIn)
+            {
+                StackPanelMain.Children.Clear();
+                StackPanelMain.Children.Add(new SignUpScreen());
+            }
         }
 
         public void import(string path)
         {
-            StackPanelMain.Children.Clear();
-            StackPanelMain.Children.Add(Chattool);
-            Chattool.addFile(path);
+            if (LoggedIn)
+            {
+                StackPanelMain.Children.Clear();
+                StackPanelMain.Children.Add(Chattool);
+                Chattool.addFile(path);
+            }
         }
 
 
@@ -156,7 +190,7 @@ namespace Blide
         //firebase
         public void Login(string email, string password)
         {
-            
+            LoggedIn = true;   
         }
         public void Signup(string email, string username , string password)
         {
