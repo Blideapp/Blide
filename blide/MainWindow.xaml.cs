@@ -8,12 +8,7 @@ using LibGit2Sharp;
 using System.IO;
 using System.Linq;
 using System;
-using FireSharp.Config;
-using FireSharp.Response;
-using FireSharp.Interfaces;
-using FireSharp.Extensions;
-using FireSharp.Exceptions;
-using FireSharp.EventStreaming;
+
 
 
 namespace Blide
@@ -23,13 +18,8 @@ namespace Blide
     {
         ChatTool Chattool = new ChatTool();
         HypeTool Hypetool = new HypeTool();
-        private bool LoggedIn = false;
-
-        IFirebaseConfig firebaseconfig = new FirebaseConfig
-        {
-            AuthSecret = "",
-            BasePath = ""
-        }; 
+        
+        FirebaseSettings firebaseclient = new FirebaseSettings();
 
         public MainWindow()
         {
@@ -115,14 +105,14 @@ namespace Blide
         }
         public void showChatTool()
         {
-            if (LoggedIn) { 
+            if (firebaseclient.isLoggedIn()) { 
             StackPanelMain.Children.Clear();
             StackPanelMain.Children.Add(Chattool);
             }
         }
         public void showBotList()
         {
-            if (LoggedIn)
+            if (firebaseclient.isLoggedIn())
             {
                 StackPanelMain.Children.Clear();
                 StackPanelMain.Children.Add(new Botlist());
@@ -130,28 +120,28 @@ namespace Blide
         }
         public void showLoading()
             {
-                if (LoggedIn)
+                if (firebaseclient.isLoggedIn())
                 {
                     StackPanelMain.Children.Clear();
                     StackPanelMain.Children.Add(new LoadingScreen());
                 } }
         public void showSettings()
             {
-                if (LoggedIn)
+                if (firebaseclient.isLoggedIn())
                 {
                     StackPanelMain.Children.Clear();
                     StackPanelMain.Children.Add(new Settings());
                 } }
         public void showHypeTool()
             {
-                if (LoggedIn)
+                if (firebaseclient.isLoggedIn())
                 {
                     StackPanelMain.Children.Clear();
                     StackPanelMain.Children.Add(Hypetool);
                 } }
         public void showHalloween()
         {
-            if (LoggedIn)
+            if (firebaseclient.isLoggedIn())
             {
                 StackPanelMain.Children.Clear();
                 StackPanelMain.Children.Add(new Halloween());
@@ -159,7 +149,7 @@ namespace Blide
         }
         public void showLogin()
         {
-            if (LoggedIn)
+            if (!firebaseclient.isLoggedIn())
             {
                 StackPanelMain.Children.Clear();
                 StackPanelMain.Children.Add(new LoginScreen());
@@ -168,16 +158,15 @@ namespace Blide
 
         public void showSignup()
         {
-            if (LoggedIn)
-            {
+            
                 StackPanelMain.Children.Clear();
                 StackPanelMain.Children.Add(new SignUpScreen());
-            }
+            
         }
 
         public void import(string path)
         {
-            if (LoggedIn)
+            if (firebaseclient.isLoggedIn())
             {
                 StackPanelMain.Children.Clear();
                 StackPanelMain.Children.Add(Chattool);
@@ -185,17 +174,14 @@ namespace Blide
             }
         }
 
-
-
-        //firebase
         public void Login(string email, string password)
         {
-            LoggedIn = true;   
+            firebaseclient.login(email, password);
         }
-        public void Signup(string email, string username , string password)
-        {
 
-        }
+
+
+        
 
 
 

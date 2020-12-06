@@ -44,7 +44,8 @@ namespace Blide
         private string emoteline = "";
         private int messageDelay = 1000;
         private int messagesSent = 0;
-        private bool twentyPercent = false;
+        private bool useRandomDelay = false;
+        static bool sendStopConfirmation = false;
         //BG worker for chatreading
         private readonly BackgroundWorker Readworker = new BackgroundWorker();
         private readonly BackgroundWorker Spamworker = new BackgroundWorker();
@@ -143,7 +144,7 @@ namespace Blide
 
         private async void run()
         {
-            twentyPercent = randomizeButton.getStatus();
+            useRandomDelay = randomizeButton.getStatus();
             canRun = true;
             twitchChannel = Channel.Text;
             emoteline = Content.Text + " ";
@@ -186,7 +187,7 @@ namespace Blide
                 }
 
                 string secondsstring = seconds + "";
-                if(seconds < 10)
+                if(seconds < 10) // 1:2 -> 1:02
                 {
                     secondsstring = "0" + secondsstring;
                 }
@@ -194,8 +195,6 @@ namespace Blide
                 timerLabel.Content = minutes + ":" + secondsstring;
 
             }
-
-
 
             canRun = false;
             stop();
@@ -235,7 +234,11 @@ namespace Blide
                         
                         Readworker.CancelAsync();
                         canRun = false;
-                        irc.SendPublicChatMessage("stopped");
+                        if (sendStopConfirmation)
+                        {
+                            irc.SendPublicChatMessage("stopped");
+                        }
+                        
                     }
                 }
 
@@ -261,7 +264,7 @@ namespace Blide
                     irc.SendPublicChatMessage(emoteline);
                     messagesSent++;
                 }
-                if (twentyPercent)
+                if (useRandomDelay)
                 {
                     Random rnd = new Random();
                     double temp = rnd.NextDouble() * (1.2 - 0.8) + 0.8;
@@ -274,8 +277,7 @@ namespace Blide
                 
             }
         }
-        private void Spamworker_RunWorkerCompleted(object sender,
-                                                  RunWorkerCompletedEventArgs e)
+        private void Spamworker_RunWorkerCompleted(object sender,RunWorkerCompletedEventArgs e)
         {
             //update ui once worker complete his work
         }
