@@ -135,7 +135,7 @@
     </Compile>
     <Compile Include="PingSender.cs" />
     <Compile Include="SelectAllFocusBehavior.cs" />
-    <Compile Include="Settings.cs" />
+    <Compile Include="FirebaseSettings.cs" />
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>

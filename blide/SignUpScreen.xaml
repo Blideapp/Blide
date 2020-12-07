@@ -3,10 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Blide"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             d:DesignHeight="615" d:DesignWidth="985">
+    <Grid Margin="0,-5,0,5">
+        <Label Visibility="Visible" Name="SignupLabel" Content="Sign up now!" Margin="0,0,328,373" VerticalAlignment="Bottom" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="85" Width="514" Foreground="White" FontSize="48"/>
+        <Label Visibility="Visible" x:Name="SignupLabel_Copy" Content="create new account:" Margin="143,274,328,305" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="36" Width="514" Foreground="White" FontSize="18"/>
+        <Rectangle Fill="#3b4042" HorizontalAlignment="Left" Height="30" Margin="291,350,0,0" VerticalAlignment="Top" Width="218"/>
+        <TextBox local:SelectAllFocusBehavior.Enable="True" Name="EmailText" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" Foreground="White" HorizontalAlignment="Left" Height="27" Margin="321,353,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="188" TextChanged="TextBox_TextChanged"/>
+        <materialDesign:PackIcon Kind="Email" Foreground="White" HorizontalAlignment="Left" Margin="295,348,0,0" VerticalAlignment="Top" Height="32" Width="20"/>
+        <Rectangle Fill="#3b4042" HorizontalAlignment="Left" Height="30" Margin="291,389,0,0" VerticalAlignment="Top" Width="218"/>
+        <PasswordBox Name="passwordText" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" Foreground="White" HorizontalAlignment="Left" Height="30" Margin="321,385,0,0" VerticalAlignment="Top" Width="188" />
+        <materialDesign:PackIcon Kind="LockOpen" Foreground="White" HorizontalAlignment="Left" Margin="294,385,0,0" VerticalAlignment="Top" Height="38" Width="23"/>
+        <Label Visibility="Visible" x:Name="LoadingBarLabel_Copy1" Content="already have an account? &#x9;           now" Margin="143,456,328,123" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="36" Width="514" Foreground="White" FontSize="14"/>
+        <Label Foreground="#FF2196F3" Visibility="Visible" x:Name="SigninLabel" Content="Sign in" Margin="210,456,261,123" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="36" Width="514" FontSize="14" MouseLeftButtonDown="SigninLabel_MouseLeftButtonDown"/>
+        <Button Content="sign up" Name="SignupButton" HorizontalAlignment="Left" Margin="428,429,0,0" VerticalAlignment="Top" Width="81" Height="28" Click="SignupButton_Click"/>
+        <Rectangle Fill="#3b4042" HorizontalAlignment="Left" Height="30" Margin="292,310,0,0" VerticalAlignment="Top" Width="218"/>
+        <materialDesign:PackIcon Kind="Account" Foreground="White" HorizontalAlignment="Left" Margin="292,302,0,0" VerticalAlignment="Top" Height="46" Width="28"/>
+        <TextBox local:SelectAllFocusBehavior.Enable="True" x:Name="usernameText" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" Foreground="White" HorizontalAlignment="Left" Height="27" Margin="322,313,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="188" TextChanged="TextBox_TextChanged"/>
+
     </Grid>
 </UserControl>

@@ -119,12 +119,11 @@ namespace Blide
             }
         }
         public void showLoading()
-            {
-                if (firebaseclient.isLoggedIn())
-                {
-                    StackPanelMain.Children.Clear();
-                    StackPanelMain.Children.Add(new LoadingScreen());
-                } }
+        {
+
+            StackPanelMain.Children.Clear();
+            StackPanelMain.Children.Add(new LoadingScreen());
+        }
         public void showSettings()
             {
                 if (firebaseclient.isLoggedIn())
@@ -178,10 +177,11 @@ namespace Blide
         {
             firebaseclient.login(email, password);
         }
+        public void SignUp(string name, string email, string password)
+        {
+            firebaseclient.signup(name, email, password);
+        }
 
-
-
-        
 
 
 

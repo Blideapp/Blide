@@ -28,14 +28,14 @@ namespace Blide
 
         public Boolean isLoggedIn()
         {
-            return true;
+            return false;
         }
 
         public void login(string email, string password)
         {
             throw new NotImplementedException();
         }
-        public void signup(string email, string password)
+        public void signup(string name, string email, string password)
         {
             throw new NotImplementedException();
         }

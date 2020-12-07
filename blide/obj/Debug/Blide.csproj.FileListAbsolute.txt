@@ -268,3 +268,4 @@ E:\Github repos\Blide\Blide\obj\Debug\SignUpScreen.baml
 E:\Github repos\Blide\Blide\bin\Debug\Newtonsoft.Json.dll
 E:\Github repos\Blide\Blide\bin\Debug\Newtonsoft.Json.xml
 E:\Github repos\Blide\Blide\bin\Debug\DeltaCompressionDotNet.xml
+E:\Github repos\Blide\Blide\bin\Debug\Firebase.Auth.dll
