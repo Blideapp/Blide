@@ -32,7 +32,7 @@ namespace Blide
         {
 
         }
-
+        /*
         private async void LoadingBarLabel_Copy2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             LoadingBarLabel_Copy2.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#45abff"));
@@ -44,6 +44,6 @@ namespace Blide
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
             wnd.Login(usernameText.Text, passwordText.Password);
-        }
+        }*/
     }
 }

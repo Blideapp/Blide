@@ -91,6 +91,18 @@ namespace Blide
                         i = i + 5;
 
                     }
+                    if(numbers.Contains(temp[i]) && temp[i + 1] == ':' && numbers.Contains(temp[i + 2]) && numbers.Contains(temp[i + 3])) //if z:zz -> danach name bis :
+                    {
+                        int j = i + 5;
+                        while (temp[j] != ':')
+                        {
+                            stringBuilder = stringBuilder + temp[j] + "";
+                            j++;
+                        }
+                        stringBuilder = stringBuilder + ";";
+                        i = i + 4;
+
+                    }
 
 
                 }

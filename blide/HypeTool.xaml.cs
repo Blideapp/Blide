@@ -173,10 +173,10 @@ namespace Blide
 
             int minutes = 0;
             int seconds = 0;
-            for(int i = 0; i < 120; i++)
+            for(int i = 0; i <= 120; i++)
             {
                 await Task.Delay(1000);
-                if (seconds >= 59)
+                if (seconds > 59)
                 {
                     seconds = 0;
                     minutes++;

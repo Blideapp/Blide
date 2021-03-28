@@ -39,7 +39,7 @@ namespace Blide
             await Task.Delay(69);
             LoadingBarRectangle.Width = 239;
             await Task.Delay(69);
-            wnd.showLogin();
+            wnd.showChatTool();
         }
     }
 }

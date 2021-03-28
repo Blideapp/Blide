@@ -17,8 +17,8 @@
         <PasswordBox Name="passwordText" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" Foreground="White" HorizontalAlignment="Left" Height="30" Margin="321,329,0,0" VerticalAlignment="Top" Width="188" />
         <materialDesign:PackIcon Kind="LockOpen" Foreground="White" HorizontalAlignment="Left" Margin="294,329,0,0" VerticalAlignment="Top" Height="38" Width="23"/>
         <Label Visibility="Visible" x:Name="LoadingBarLabel_Copy1" Content="no account yet? &#x9;           now" Margin="143,407,328,172" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="36" Width="514" Foreground="White" FontSize="14"/>
-        <Label Foreground="#FF2196F3" Visibility="Visible" x:Name="LoadingBarLabel_Copy2" Content="Sign up" Margin="180,407,291,172" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="36" Width="514" FontSize="14" MouseLeftButtonDown="LoadingBarLabel_Copy2_MouseLeftButtonDown"/>
-        <Button Content="log in" Name="loginButton" HorizontalAlignment="Left" Margin="439,373,0,0" VerticalAlignment="Top" Width="70" Height="28" Click="loginButton_Click"/>
+        <Label Foreground="#FF2196F3" Visibility="Visible" x:Name="LoadingBarLabel_Copy2" Content="Sign up" Margin="180,407,291,172" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="36" Width="514" FontSize="14" />
+        <Button Content="log in" Name="loginButton" HorizontalAlignment="Left" Margin="439,373,0,0" VerticalAlignment="Top" Width="70" Height="28" />
 
 
     </Grid>

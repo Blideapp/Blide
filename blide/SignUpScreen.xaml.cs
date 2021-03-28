@@ -25,7 +25,7 @@ namespace Blide
         {
             InitializeComponent();
         }
-        
+        /*
         private void SignupButton_Click(object sender, RoutedEventArgs e)
         {
             wnd.SignUp(usernameText.Text, EmailText.Text, passwordText.Password);
@@ -38,7 +38,7 @@ namespace Blide
             SigninLabel.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF2196F3"));
             wnd.showLogin();
         }
-
+        */
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 

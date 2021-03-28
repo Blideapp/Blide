@@ -25,7 +25,7 @@
         <TextBox Name="SettingsTwitchChannel" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="193,120,0,0" TextWrapping="Wrap" Text="Channel name" VerticalAlignment="Top" Width="339" Foreground="White" Background="#1b1c1f" FontSize="15" />
         <TextBox Name="SettingsTwitchPrefix" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="193,319,0,0" TextWrapping="Wrap" Text="/ban " VerticalAlignment="Top" Width="339" Foreground="White" Background="#1b1c1f" FontSize="15" />
         <TextBox Name="SettingsTwitchDelay" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="193,369,0,0" TextWrapping="Wrap" Text="300" VerticalAlignment="Top" Width="339" Foreground="White" Background="#1b1c1f" FontSize="15" />
-        <Label Content="special version für Ella" HorizontalAlignment="Left" Foreground="White" FontSize="22" FontWeight="ExtraBlack" Margin="635,0,0,0" VerticalAlignment="Top" Height="65" Width="251" Grid.Column="1"/>
+        <Label Content="V 2.0.1" HorizontalAlignment="Left" Foreground="White" FontSize="22" FontWeight="ExtraBlack" Margin="635,0,0,0" VerticalAlignment="Top" Height="65" Width="251" Grid.Column="1"/>
         <Label Content="Open source libraries used:&#xA;Twitchlib&#xA;Newtonsoft.Json&#xA;WebSocketSharp-NonPreRelease&#xA;libgit2sharp&#xD;&#xA;Squirrel.windows&#xD;&#xA;&#xD;&#xA;special thanks to:&#xD;&#xA;jcmt.dev&#xA;&#xA;" HorizontalAlignment="Left" Foreground="LightGray" FontSize="12" FontWeight="SemiBold" Margin="635,28,0,0" VerticalAlignment="Top" Height="160" Width="216" Grid.Column="1"/>
 
 

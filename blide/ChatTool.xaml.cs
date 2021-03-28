@@ -168,9 +168,9 @@ namespace Blide
                         if (CanRun)
                         {
                             irc.SendPublicChatMessage(prefix + lines[i] + "");
-
                             await Task.Delay(delay);
                         }
+                        
                         else
                         {
                             break;

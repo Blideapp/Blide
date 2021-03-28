@@ -105,18 +105,15 @@ namespace Blide
         }
         public void showChatTool()
         {
-            if (firebaseclient.isLoggedIn()) { 
             StackPanelMain.Children.Clear();
             StackPanelMain.Children.Add(Chattool);
-            }
+            
         }
         public void showBotList()
         {
-            if (firebaseclient.isLoggedIn())
-            {
                 StackPanelMain.Children.Clear();
                 StackPanelMain.Children.Add(new Botlist());
-            }
+            
         }
         public void showLoading()
         {
@@ -126,11 +123,11 @@ namespace Blide
         }
         public void showSettings()
             {
-                if (firebaseclient.isLoggedIn())
-                {
+                
                     StackPanelMain.Children.Clear();
                     StackPanelMain.Children.Add(new Settings());
-                } }
+                 }
+        /*
         public void showHypeTool()
             {
                 if (firebaseclient.isLoggedIn())
@@ -146,6 +143,7 @@ namespace Blide
                 StackPanelMain.Children.Add(new Halloween());
             }
         }
+        /*
         public void showLogin()
         {
             if (!firebaseclient.isLoggedIn())
@@ -161,18 +159,15 @@ namespace Blide
                 StackPanelMain.Children.Clear();
                 StackPanelMain.Children.Add(new SignUpScreen());
             
-        }
+        }*/
 
         public void import(string path)
         {
-            if (firebaseclient.isLoggedIn())
-            {
                 StackPanelMain.Children.Clear();
                 StackPanelMain.Children.Add(Chattool);
-                Chattool.addFile(path);
-            }
+                Chattool.addFile(path);            
         }
-
+        /*
         public void Login(string email, string password)
         {
             firebaseclient.login(email, password);
@@ -181,11 +176,11 @@ namespace Blide
         {
             firebaseclient.signup(name, email, password);
         }
+        */
 
 
 
-
-
+        
 
     }
 }
