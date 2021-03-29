@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("blite%20logo%20color%20(1).ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("blide-logo-v2.ico")]
 
 
