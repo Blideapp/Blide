@@ -1,3 +1,4 @@
+### [:red_circle: Visit the product website](https://blideapp.de)
 ### [:red_circle: download latest version](https://github.com/sntlyeet/Blide/releases/download/2.0.1/Setup.exe)
 # Introduction
 Blide is an advanced moderation tool to manage twitch streams. It can be used to create, edit and execute botlists
