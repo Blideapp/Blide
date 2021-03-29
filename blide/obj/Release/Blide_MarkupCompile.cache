@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Programme\github repository\blide\Blide\obj\Release\
+E:\Github repos\Blide\Blide\obj\Release\
 Blide
 none
 false
 TRACE
-E:\Programme\github repository\blide\Blide\App.xaml
-9-8208815
+E:\Github repos\Blide\Blide\App.xaml
+11-65653842
 
-1728852179
-85724724384
-ChatTool.xaml;Botlist.xaml;Halloween.xaml;HypeTool.xaml;LoadingScreen.xaml;MainWindow.xaml;Settings.xaml;ToggleButton.xaml;UserControlMenuItem.xaml;
+21-1949101
+84-655677114
+ChatTool.xaml;Botlist.xaml;Halloween.xaml;HypeTool.xaml;LoadingScreen.xaml;LoginScreen.xaml;MainWindow.xaml;Settings.xaml;SignUpScreen.xaml;ToggleButton.xaml;UserControlMenuItem.xaml;
 
 False
 
