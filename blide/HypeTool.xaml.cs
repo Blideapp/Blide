@@ -19,7 +19,6 @@ using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
-using System.ComponentModel;
 
 namespace Blide
 {
@@ -32,14 +31,8 @@ namespace Blide
         int interval = 1;
         bool startStatus = false;
         MainWindow wnd = (MainWindow)Application.Current.MainWindow;
-        private static Boolean settingsExist = false;
-        private static string _botName = "";
-        private static string _broadcasterName = "";
-        private static string _twitchOAuth = "";
-        private static int delay = 300;
-        private static string twitchChannel= "";
-        private static string prefix = "/ban ";
-        public static Boolean JoinMessage;
+        SettingsManager settings = new SettingsManager();
+        private static string twitchChannel= "";        
         private static Boolean  canRun = false; // hypetool runable
         private string emoteline = "";
         private int messageDelay = 1000;
@@ -52,9 +45,8 @@ namespace Blide
 
         public HypeTool()
         {
-            InitializeComponent();
-            loadSettings();
-            
+            InitializeComponent();            
+
             amountText.Text = amount + "";
 
             Readworker.DoWork += Readworker_DoWork;
@@ -171,12 +163,11 @@ namespace Blide
 
             //countdown
 
-            int minutes = 0;
-            int seconds = 0;
+            int minutes = 1;
+            int seconds = 50;
             for(int i = 0; i <= 120; i++)
             {
-                await Task.Delay(1000);
-                if (seconds > 59)
+                if (seconds >= 59)
                 {
                     seconds = 0;
                     minutes++;
@@ -193,12 +184,12 @@ namespace Blide
                 }
 
                 timerLabel.Content = minutes + ":" + secondsstring;
-
-            }
-
+                await Task.Delay(1000);
+            }            
             canRun = false;
             stop();
             startStatus = false;
+            timerLabel.Content = "00:00";
         }
         
         public async void UpdateMessageCount()
@@ -212,7 +203,7 @@ namespace Blide
 
         private void Readworker_DoWork(object sender, DoWorkEventArgs e)
         {
-            IrcClient irc = new IrcClient("irc.twitch.tv", 6667,_botName, _twitchOAuth, twitchChannel);
+            IrcClient irc = new IrcClient("irc.twitch.tv", 6667,settings.getBotName(), settings.getTwitchOAuth(), twitchChannel);
 
             while (canRun)
             {
@@ -255,7 +246,7 @@ namespace Blide
 
         private async void Spamworker_DoWork(object sender, DoWorkEventArgs e)
         {
-            IrcClient irc = new IrcClient("irc.twitch.tv", 6667, _botName, _twitchOAuth, twitchChannel);
+            IrcClient irc = new IrcClient("irc.twitch.tv", 6667, settings.getBotName(), settings.getTwitchOAuth(), twitchChannel);
 
             while (canRun)
             {
@@ -282,47 +273,7 @@ namespace Blide
             //update ui once worker complete his work
         }
 
-
-        public void loadSettings()
-        {
-            if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BlideSettings.txt")))
-            {
-                string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string[] lines = System.IO.File.ReadAllLines(Path.Combine(docPath, "BlideSettings.txt"));
-                _botName = lines[0];
-                _broadcasterName = lines[1];
-                _twitchOAuth = lines[2];
-                delay = Int32.Parse(lines[3]);
-                prefix = "" + lines[4];
-                JoinMessage = Boolean.Parse(lines[5]);
-            }
-            else
-            {
-                createSettings();
-            }
-        }
         
-        public void createSettings()
-        {
-            string[] lines = { "yourname", "streamername", "OAuth token", "300", "/ban ", "false" };
-            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "BlideSettings.txt")))
-            {
-                foreach (string line in lines)
-                    outputFile.WriteLine(line);
-            }
-        }
-        public Boolean settingsEmpty()
-        {
-            if (_botName != null || _broadcasterName != null || _twitchOAuth != null || delay != 0 || prefix != null)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
     }
 
 }

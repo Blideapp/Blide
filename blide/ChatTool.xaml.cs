@@ -19,13 +19,7 @@ namespace Blide
     public partial class ChatTool : UserControl
     {
         MainWindow wnd = (MainWindow)Application.Current.MainWindow;
-        private static Boolean settingsExist = false;
-        private static string _botName = "";
-        private static string _broadcasterName = "";
-        private static string _twitchOAuth = "";
-        private static int delay = 300;
-        private static string prefix = "/ban ";
-        public static Boolean JoinMessage;
+        SettingsManager settings = new SettingsManager();
         public static string runAnyways = "";
 
         static IrcClient irc;
@@ -48,8 +42,7 @@ namespace Blide
         //CAPS LOCK:
         private const uint VK_CAPITAL = 0x70;
         List<string> paths = new List<string>();
-        Boolean CanRun = false;
-        private IntPtr _windowHandle;
+        Boolean CanRun = false;       
 
         public ChatTool()
         {
@@ -57,13 +50,6 @@ namespace Blide
             DataContext = dc;
             IsVisibleChanged += ChatTool_IsVisibleChanged;
 
-            /*
-            _windowHandle = new WindowInteropHelper(wnd).Handle;
-            _source = HwndSource.FromHwnd(_windowHandle);
-            _source.AddHook(HwndHook);
-
-            RegisterHotKey(_windowHandle, HOTKEY_ID, MOD_CONTROL, VK_CAPITAL); //CTRL + CAPS_LOCK
-            */
         }
 
         private void ChatTool_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -122,7 +108,7 @@ namespace Blide
             if (isLive())
             {
 
-                if (MessageBox.Show(_broadcasterName + " is currently live. Continue anyways?", _broadcasterName + " is live", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                if (MessageBox.Show(settings.getChannelNames()+ " is currently live. Continue anyways?", settings.getChannelNames() + " is live", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
                     dc.ConsoleOutput.Add("stopping - streamer is live");
                     startBot.Content = "Start";
@@ -153,9 +139,9 @@ namespace Blide
         private async void run()
         {
             startIrc();
-            if (settingsExist)
+            if (settings.getSettingsExist())
             {
-                if (JoinMessage) { TwitchLib(); }
+                if (settings.getJoinMessage()) { TwitchLib(); }
 
 
                 foreach (String item in paths)
@@ -167,8 +153,8 @@ namespace Blide
                     {
                         if (CanRun)
                         {
-                            irc.SendPublicChatMessage(prefix + lines[i] + "");
-                            await Task.Delay(delay);
+                            irc.SendPublicChatMessage(settings.getPrefix() + lines[i] + "");
+                            await Task.Delay(settings.getDelay());
                         }
                         
                         else
@@ -215,32 +201,19 @@ namespace Blide
 
         }
 
-        //global hotkey
-        private HwndSource _source;
         protected void startIrc()
         {
-            if (settingsEmpty() || !File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BlideSettings.txt")))
+            if (settings.getSettingsExist() ||settings.getSettingsIsEmpty())
             {
-                dc.ConsoleOutput.Add("missing settings file or part of settings");
-                if (!File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BlideSettings.txt")))
-                {
-                    dc.ConsoleOutput.Add("trying to create settings file");
-                    createSettings();
-                    dc.ConsoleOutput.Add("new settings file created - please edit");
-                    settingsExist = false;
-                }
-                //Stop();
+                dc.ConsoleOutput.Add("missing settings file or parts of settings are empty");
+               
             }
-            else
+            
+            if (!settings.getSettingsIsEmpty() && settings.getSettingsExist())
             {
-                settingsExist = true;
-            }
-            if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BlideSettings.txt")) && settingsExist)
-            {
-                loadSettings();
                 irc = new IrcClient("irc.twitch.tv", 6667,
-                                _botName, _twitchOAuth, _broadcasterName);
-                dc.ConsoleOutput.Add("found settings - connecting to " + _broadcasterName);
+                                settings.getBotName(), settings.getTwitchOAuth(), settings.getChannelNames()) ;
+                dc.ConsoleOutput.Add("found settings - connecting to " + settings.getChannelNames());
             }
 
         }
@@ -271,64 +244,13 @@ namespace Blide
             return IntPtr.Zero;
         }
 
-        //settings:
-        public void loadSettings()
-        {
-            if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BlideSettings.txt")))
-            {
-                string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string[] lines = System.IO.File.ReadAllLines(Path.Combine(docPath, "BlideSettings.txt"));
-                _botName = lines[0];
-                _broadcasterName = lines[1];
-                _twitchOAuth = lines[2];
-                delay = Int32.Parse(lines[3]);
-                prefix = "" + lines[4];
-                JoinMessage = Boolean.Parse(lines[5]);
-            }
-            else
-            {
-                createSettings();
-            }
-        }
-        public void writeSettings()
-        {
-            string[] lines = { _botName, _broadcasterName, _twitchOAuth, delay + "", prefix, JoinMessage + "" };
-            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "BlideSettings.txt")))
-            {
-                foreach (string line in lines)
-                    outputFile.WriteLine(line);
-            }
-
-        }
-        public void createSettings()
-        {
-            string[] lines = { "yourname", "streamername", "OAuth token", "300", "/ban ", "false" };
-            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "BlideSettings.txt")))
-            {
-                foreach (string line in lines)
-                    outputFile.WriteLine(line);
-            }
-        }
-        public Boolean settingsEmpty()
-        {
-            if (_botName != null || _broadcasterName != null || _twitchOAuth != null || delay != 0 || prefix != null)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
 
         //live check using api
 
         public Boolean isLive()
         {
-            loadSettings();
-            string strPagecode = client.DownloadString("https://twitchapi.jcmt.dev/v1/getStreamStatus/" + _broadcasterName);
+            
+            string strPagecode = client.DownloadString("https://twitchapi.jcmt.dev/v1/getStreamStatus/" + settings.getChannelNames());
             string[] stringparts = strPagecode.Split('"', ':', '}');
             if (bool.TryParse(stringparts[6], out bool result))
             {

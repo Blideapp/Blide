@@ -154,6 +154,7 @@
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SettingsManager.cs" />
     <Compile Include="SignUpScreen.xaml.cs">
       <DependentUpon>SignUpScreen.xaml</DependentUpon>
     </Compile>

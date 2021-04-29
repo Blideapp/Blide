@@ -52,7 +52,7 @@ namespace Blide
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("an IRC error occured in function SendIrcMessage and Blide has been stopped. Error:" + ex.Message);
             }
         }
 
@@ -65,7 +65,8 @@ namespace Blide
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("an IRC error occured in function SendPublicChatMessage and Blide has been stopped. Error:" + ex.Message);
+
             }
         }
 
@@ -78,7 +79,7 @@ namespace Blide
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("an IRC error occured in function ReadMessage and Blide has been stopped. Error:" + ex.Message);
                 return "Error receiving message: " + ex.Message;
             }
         }
