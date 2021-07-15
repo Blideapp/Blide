@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -22,8 +23,9 @@ namespace Blide
         SettingsManager settings = new SettingsManager();
         public static string runAnyways = "";
 
-        static IrcClient irc;
-
+        static List<Object> objlist = new List<Object>(); //irc clients
+        static List<string> channelNames = new List<string>(); //streamer names
+        List<string> paths = new List<string>(); //file paths
         static WebClient client = new WebClient();
 
         //console
@@ -41,8 +43,7 @@ namespace Blide
         private const uint MOD_CONTROL = 0x0002; //CTRL
         //CAPS LOCK:
         private const uint VK_CAPITAL = 0x70;
-        List<string> paths = new List<string>();
-        Boolean CanRun = false;       
+        Boolean CanRun = false;
 
         public ChatTool()
         {
@@ -105,10 +106,12 @@ namespace Blide
         private async void countdown()
         {
             CanRun = false;
+            startIrc();
+            /*
             if (isLive())
             {
 
-                if (MessageBox.Show(settings.getChannelNames()+ " is currently live. Continue anyways?", settings.getChannelNames() + " is live", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                if (MessageBox.Show("one or more streamer is currently live. Continue anyways?", "one or more streamer is live", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
                     dc.ConsoleOutput.Add("stopping - streamer is live");
                     startBot.Content = "Start";
@@ -126,19 +129,20 @@ namespace Blide
 
             }
             else
-            {
-                dc.ConsoleOutput.Add("starting");
-                await Task.Delay(100);
-                CanRun = true;
-                run();
-                StartBotUsage = true;
-            }
+            {*/
+            dc.ConsoleOutput.Add("starting");
+            await Task.Delay(100);
+            CanRun = true;
+            run();
+            StartBotUsage = true;
+            //}
         }
 
 
         private async void run()
         {
-            startIrc();
+            
+
             if (settings.getSettingsExist())
             {
                 if (settings.getJoinMessage()) { TwitchLib(); }
@@ -153,10 +157,16 @@ namespace Blide
                     {
                         if (CanRun)
                         {
-                            irc.SendPublicChatMessage(settings.getPrefix() + lines[i] + "");
+
+                            foreach (IrcClient sender in objlist)
+                            {
+                                sender.SendPublicChatMessage(settings.getPrefix() + lines[i] + "");
+                                await Task.Delay(10);
+                            }
+
                             await Task.Delay(settings.getDelay());
                         }
-                        
+
                         else
                         {
                             break;
@@ -165,6 +175,33 @@ namespace Blide
                     dc.ConsoleOutput.Add("finished file: " + item);
                 }
                 dc.ConsoleOutput.Add("finished");
+                // send data to api -> error messages + streamer info
+                try
+                {
+                    string apirequest = client.DownloadString("http://api.blideapp.de/blidestats.php?channel=" + settings.getChannelNames() + "&errorlog=none");
+                    if (apirequest != "")
+                    {
+                        MessageBox.Show("Blide API error: " + apirequest);
+                    }
+                }
+                catch(WebException ex)
+                {
+                    String responseFromServer = ex.Message.ToString() + " ";
+                    if (ex.Response != null)
+                    {
+                        using (WebResponse response = ex.Response)
+                        {
+                            Stream dataRs = response.GetResponseStream();
+                            using (StreamReader reader = new StreamReader(dataRs))
+                            {
+                                responseFromServer += reader.ReadToEnd();
+                            }
+                        }
+                    }                   
+                    MessageBox.Show("Blide API not reachable - error: " + responseFromServer);
+                }
+
+
                 CanRun = false;
                 await Task.Delay(500);
                 //remove all
@@ -175,9 +212,13 @@ namespace Blide
                 startBot.Content = "Start";
             }
         }
-        private void TwitchLib()
+        private async void TwitchLib()
         {
-            irc.SendPublicChatMessage("Blide initialized - everything is working properly");
+            foreach (IrcClient sender in objlist)
+            {
+                sender.SendPublicChatMessage("Blide initialized - everything is working properly");
+                await Task.Delay(300);
+            }
             dc.ConsoleOutput.Add("bot initialized in chat - login successful");
         }
         private void Stop()
@@ -203,17 +244,28 @@ namespace Blide
 
         protected void startIrc()
         {
-            if (settings.getSettingsExist() ||settings.getSettingsIsEmpty())
+            if (settings.getSettingsExist() || settings.getSettingsIsEmpty())
             {
                 dc.ConsoleOutput.Add("missing settings file or parts of settings are empty");
-               
+
             }
-            
+
             if (!settings.getSettingsIsEmpty() && settings.getSettingsExist())
             {
-                irc = new IrcClient("irc.twitch.tv", 6667,
-                                settings.getBotName(), settings.getTwitchOAuth(), settings.getChannelNames()) ;
-                dc.ConsoleOutput.Add("found settings - connecting to " + settings.getChannelNames());
+                channelNames.Clear();
+                string[] namesTemp = settings.getChannelNames().Split(';');
+
+                foreach (string item in namesTemp)
+                {
+                    channelNames.Add(item);
+                }
+                dc.ConsoleOutput.Add("found settings - connecting to: ");
+                foreach (string obj in channelNames)
+                {
+                    objlist.Add(new IrcClient("irc.twitch.tv", 6667, settings.getBotName(), settings.getTwitchOAuth(), obj));
+                    dc.ConsoleOutput.Add(obj + "");
+                }
+
             }
 
         }
@@ -246,67 +298,71 @@ namespace Blide
 
 
         //live check using api
-
+        /*
         public Boolean isLive()
-        {
+        {/*
             
-            string strPagecode = client.DownloadString("https://twitchapi.jcmt.dev/v1/getStreamStatus/" + settings.getChannelNames());
-            string[] stringparts = strPagecode.Split('"', ':', '}');
-            if (bool.TryParse(stringparts[6], out bool result))
+            
+            foreach (string streamer in channelNames)
             {
-                return result;
+                string strPagecode = client.DownloadString("https://twitchapi.rapidge.com/v1/getStreamStatus/" + streamer);
+                string[] stringparts = strPagecode.Split('"', ':', '}');
+                if (stringparts[6] != "true" && stringparts[6] != "false")
+                {
+                    dc.ConsoleOutput.Add("error: cant check if streamer is currently live");
+                    dc.ConsoleOutput.Add("would you like to continue anyways? Y/N");
+                    return false;
+                }                
+                if (bool?.TryParse(stringparts[6], out bool? result) == true)
+                {
+                    return true;
+                }
             }
-            else
-            {
-                dc.ConsoleOutput.Add("error: cant check if streamer is currently live");
-                dc.ConsoleOutput.Add("would you like to continue anyways? Y/N");
-                return true;
-            }
-
-
+            return false;
         }
 
         
 
     }
-
-    public class ConsoleContent : INotifyPropertyChanged
-    {
-        string consoleInput = string.Empty;
-        ObservableCollection<string> consoleOutput = new ObservableCollection<string>() { "Console loaded..." };
-
-        public string ConsoleInput
+*/
+        public class ConsoleContent : INotifyPropertyChanged
         {
-            get
+            string consoleInput = string.Empty;
+            ObservableCollection<string> consoleOutput = new ObservableCollection<string>() { "Console loaded..." };
+
+            public string ConsoleInput
             {
-                return consoleInput;
+                get
+                {
+                    return consoleInput;
+                }
+                set
+                {
+                    consoleInput = value;
+                    OnPropertyChanged("ConsoleInput");
+                }
             }
-            set
+
+            public ObservableCollection<string> ConsoleOutput
             {
-                consoleInput = value;
-                OnPropertyChanged("ConsoleInput");
+                get
+                {
+                    return consoleOutput;
+                }
+                set
+                {
+                    consoleOutput = value;
+                    OnPropertyChanged("ConsoleOutput");
+                }
+            }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+            void OnPropertyChanged(string propertyName)
+            {
+                if (null != PropertyChanged)
+                    PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
 
-        public ObservableCollection<string> ConsoleOutput
-        {
-            get
-            {
-                return consoleOutput;
-            }
-            set
-            {
-                consoleOutput = value;
-                OnPropertyChanged("ConsoleOutput");
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged(string propertyName)
-        {
-            if (null != PropertyChanged)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
-
 }

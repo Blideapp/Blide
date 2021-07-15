@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Blide
 {
-    /// <summary>
-    /// Interaction logic for SignUpScreen.xaml
-    /// </summary>
     public partial class SignUpScreen : UserControl
     {
         MainWindow wnd = (MainWindow)Application.Current.MainWindow;

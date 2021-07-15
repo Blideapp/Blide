@@ -7,6 +7,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Diagnostics;
 
 namespace Blide
 {
@@ -153,6 +154,11 @@ namespace Blide
         {
             joinMessage = _joinMessage;
             writeSettings();
+        }
+        public void restartApplication()
+        {
+            Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
         }
     }
 

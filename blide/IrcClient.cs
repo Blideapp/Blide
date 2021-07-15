@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net.Sockets;
 using System.Windows;
+using System.Net;
+
 namespace Blide
 {
     public class IrcClient
     {
+        SettingsManager settings = new SettingsManager();
         public string userName;
         private string channel;
 
@@ -39,6 +42,7 @@ namespace Blide
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                settings.restartApplication();
             }
         }
 
@@ -53,6 +57,7 @@ namespace Blide
             catch (Exception ex)
             {
                 MessageBox.Show("an IRC error occured in function SendIrcMessage and Blide has been stopped. Error:" + ex.Message);
+                settings.restartApplication();
             }
         }
 
@@ -66,7 +71,7 @@ namespace Blide
             catch (Exception ex)
             {
                 MessageBox.Show("an IRC error occured in function SendPublicChatMessage and Blide has been stopped. Error:" + ex.Message);
-
+                settings.restartApplication();
             }
         }
 
@@ -84,7 +89,34 @@ namespace Blide
             }
         }
 
-    
-
+        private void ReportError(string error)
+        {
+            WebClient client = new WebClient();
+            try
+            {
+                string apirequest = client.DownloadString("http://api.blideapp.de/blidestats.php?channel=" + settings.getChannelNames() + "&errorlog=" + error);
+                if (apirequest != "")
+                {
+                    MessageBox.Show("Blide API error: " + apirequest);
+                }
+            }
+            catch (WebException ex)
+            {
+                String responseFromServer = ex.Message.ToString() + " ";
+                if (ex.Response != null)
+                {
+                    using (WebResponse response = ex.Response)
+                    {
+                        Stream dataRs = response.GetResponseStream();
+                        using (StreamReader reader = new StreamReader(dataRs))
+                        {
+                            responseFromServer += reader.ReadToEnd();
+                        }
+                    }
+                }
+                MessageBox.Show("Blide API not reachable - error: " + responseFromServer);
+            }
+        }
+        
 }
 }
