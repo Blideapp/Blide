@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -8,12 +6,13 @@ using System.Windows.Input;
 namespace Blide
 {
     /// <summary>
-    /// Interaction logic for Settings.xaml
+    /// Code behind the settings window
+    /// communicates with the settingsmanager to save, load and create settings file
     /// </summary>
     public partial class Settings : UserControl
     {
         MainWindow wnd = (MainWindow)Application.Current.MainWindow;
-        SettingsManager settings = new SettingsManager();       
+        SettingsManager settings = new SettingsManager();
 
         public Settings()
         {

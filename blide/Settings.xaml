@@ -25,8 +25,8 @@
         <TextBox Name="SettingsTwitchChannel" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="193,120,0,0" TextWrapping="Wrap" Text="Channel name" VerticalAlignment="Top" Width="339" Foreground="White" Background="#1b1c1f" FontSize="15" />
         <TextBox Name="SettingsTwitchPrefix" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="193,319,0,0" TextWrapping="Wrap" Text="/ban " VerticalAlignment="Top" Width="339" Foreground="White" Background="#1b1c1f" FontSize="15" />
         <TextBox Name="SettingsTwitchDelay" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="193,369,0,0" TextWrapping="Wrap" Text="300" VerticalAlignment="Top" Width="339" Foreground="White" Background="#1b1c1f" FontSize="15" />
-        <Label Content="V 2.1.0" HorizontalAlignment="Left" Foreground="White" FontSize="22" FontWeight="ExtraBlack" Margin="635,0,0,0" VerticalAlignment="Top" Height="65" Width="251" Grid.Column="1"/>
-        <Label Content="Open source libraries used:&#xA;Twitchlib&#xA;Newtonsoft.Json&#xA;WebSocketSharp-NonPreRelease&#xA;libgit2sharp&#xA;Squirrel.windows&#xA;&#xA;special thanks to:&#xA;rapidge.com&#xD;&#xA;&#xA;&#xA;" HorizontalAlignment="Left" Foreground="LightGray" FontSize="12" FontWeight="SemiBold" Margin="635,28,0,0" VerticalAlignment="Top" Height="259" Width="216" Grid.Column="1"/>
+        <Label Content="V 2.0.2" HorizontalAlignment="Left" Foreground="White" FontSize="22" FontWeight="ExtraBlack" Margin="635,0,0,0" VerticalAlignment="Top" Height="65" Width="251" Grid.Column="1"/>
+        <Label Content="Open source libraries used:&#xA;Twitchlib&#xA;Newtonsoft.Json&#xA;WebSocketSharp-NonPreRelease&#xA;libgit2sharp&#xA;Squirrel.windows&#xA;&#xA;Partner:&#xA;rapidge.com&#xA;&#xA;&#xA;" HorizontalAlignment="Left" Foreground="LightGray" FontSize="12" FontWeight="SemiBold" Margin="635,28,0,0" VerticalAlignment="Top" Height="259" Width="216" Grid.Column="1"/>
 
 
         <local:ToggleButton x:Name="Bu" HorizontalAlignment="Center" Height="31" Margin="146,417,600,167" VerticalAlignment="Center" Width="140" MouseLeftButtonDown="Bu_MouseLeftButtonDown" Grid.Column="1"/>

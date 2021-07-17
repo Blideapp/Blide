@@ -6,7 +6,9 @@ using System.Windows.Media;
 
 namespace Blide
 {
-
+    /*
+     * adds toggle button to WPF
+     */
     public partial class ToggleButton : UserControl
     {
         Thickness LeftSide = new Thickness(-39, 0, 0, 0);
@@ -81,7 +83,7 @@ namespace Blide
             }
 
         }
-        public Boolean getStatus()
+        public Boolean getStatus() 
         {
             return Toggled;
         }

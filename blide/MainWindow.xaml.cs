@@ -1,25 +1,25 @@
 ﻿using BeautySolutions.View.ViewModel;
+using LibGit2Sharp;
 using MaterialDesignThemes.Wpf;
+using Squirrel;
+using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using Squirrel;
-using System.Threading.Tasks;
-using LibGit2Sharp;
-using System.IO;
-using System.Linq;
-using System;
 
 
 
 namespace Blide
 {
-    
+    /*
+     * Mainwindow hosting all UI and offering tabs 
+     */
+
     public partial class MainWindow : Window
     {
         ChatTool Chattool = new ChatTool();
         HypeTool Hypetool = new HypeTool();
-        
-        FirebaseSettings firebaseclient = new FirebaseSettings();
+
 
         public MainWindow()
         {
@@ -74,21 +74,19 @@ namespace Blide
 
             Repository.Clone("https://github.com/sntlyeet/blide", Path.Combine(Path.GetTempPath() + @"\blide" + dir), new CloneOptions { BranchName = "UpdateFiles" });
 
-            if(Directory.Exists(Path.Combine(Path.GetTempPath() + @"\blide" + dir)))
+            if (Directory.Exists(Path.Combine(Path.GetTempPath() + @"\blide" + dir)))
             {
                 MessageBox.Show("testing update");
                 CheckForUpdates(Path.Combine(Path.GetTempPath() + @"\blide" + dir));
             }
-            
+
 
         }
 
         private async void CheckForUpdates(string updatepath)
         {
-            using (var mgr = new UpdateManager(updatepath))
-            {
-                await mgr.UpdateApp();
-            }
+           
+
 
         }
 
@@ -107,13 +105,13 @@ namespace Blide
         {
             StackPanelMain.Children.Clear();
             StackPanelMain.Children.Add(Chattool);
-            
+
         }
         public void showBotList()
         {
-                StackPanelMain.Children.Clear();
-                StackPanelMain.Children.Add(new Botlist());
-            
+            StackPanelMain.Children.Clear();
+            StackPanelMain.Children.Add(new Botlist());
+
         }
         public void showLoading()
         {
@@ -122,11 +120,11 @@ namespace Blide
             StackPanelMain.Children.Add(new LoadingScreen());
         }
         public void showSettings()
-            {
-                
-                    StackPanelMain.Children.Clear();
-                    StackPanelMain.Children.Add(new Settings());
-                 }
+        {
+
+            StackPanelMain.Children.Clear();
+            StackPanelMain.Children.Add(new Settings());
+        }
         /*
         public void showHypeTool()
             {
@@ -163,9 +161,9 @@ namespace Blide
 
         public void import(string path)
         {
-                StackPanelMain.Children.Clear();
-                StackPanelMain.Children.Add(Chattool);
-                Chattool.addFile(path);            
+            StackPanelMain.Children.Clear();
+            StackPanelMain.Children.Add(Chattool);
+            Chattool.addFile(path);
         }
         /*
         public void Login(string email, string password)
@@ -180,7 +178,7 @@ namespace Blide
 
 
 
-        
+
 
     }
 }

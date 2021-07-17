@@ -1,30 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Text.RegularExpressions;
-using System.Media;
-using SharpCompress.Common;
-using System.IO;
-using Microsoft.Win32;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using NAudio;
-using NAudio.Wave;
 
 namespace Blide
 {
     /// <summary>
-    /// Interaction logic for Halloween.xaml
+    /// This part of the software was supposed to play random sounds from a specific folder at a random time
+    /// It was used for a special halloween stream and might be developed into a full feature
     /// </summary>
     public partial class Halloween : UserControl
     {
@@ -72,7 +60,7 @@ namespace Blide
 
         private void maxButtonDec_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (Int32.Parse(maxText.Text) > 1 && Int32.Parse(maxText.Text) -1 >= Int32.Parse(minText.Text))
+            if (Int32.Parse(maxText.Text) > 1 && Int32.Parse(maxText.Text) - 1 >= Int32.Parse(minText.Text))
             {
                 maxText.Text = Int32.Parse(maxText.Text) - 1 + "";
             }
@@ -98,7 +86,7 @@ namespace Blide
             min = Int32.Parse(minText.Text);
         }
 
-        
+
 
         private void chooseFolder_Click(object sender, RoutedEventArgs e)
         {
@@ -138,7 +126,7 @@ namespace Blide
         {
             running = false;
         }
-        private async void run()            
+        private async void run()
         {
             SettingsSave();
             int min = Int32.Parse(minText.Text);
@@ -155,7 +143,7 @@ namespace Blide
                 {
                     runsound();
                 }
-               
+
             }
 
         }
@@ -191,15 +179,15 @@ namespace Blide
         private void runsound()
         {
             files = Directory.GetFiles(folderPath);
-            int random = rnd.Next(0, files.Length -1);
+            int random = rnd.Next(0, files.Length - 1);
             if (avoidButton.getStatus())
             {
-                while(random == last)
+                while (random == last)
                 {
-                     random = rnd.Next(0, files.Length);
+                    random = rnd.Next(0, files.Length);
                 }
             }
-            
+
             last = random;
             String soundPlayer = System.IO.Path.Combine(folderPath, files[random]);
             double volumeint = double.Parse(volumeText.Text);
@@ -243,7 +231,7 @@ namespace Blide
         }
         public void SettingsCreate()
         {
-            string[] lines = {folderPath, "true", 1 + "", 1 + "" };
+            string[] lines = { folderPath, "true", 1 + "", 1 + "" };
 
             using (StreamWriter outputFile = new StreamWriter(System.IO.Path.Combine(docPath, "screamer.txt")))
             {

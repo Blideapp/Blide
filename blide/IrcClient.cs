@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using System.Net;
 using System.Net.Sockets;
 using System.Windows;
-using System.Net;
 
 namespace Blide
 {
     public class IrcClient
     {
+        /*
+         * This is used to use twitch irc backend
+         */
         SettingsManager settings = new SettingsManager();
         public string userName;
         private string channel;
@@ -46,7 +45,7 @@ namespace Blide
             }
         }
 
-        public void SendIrcMessage(string message)
+        public void SendIrcMessage(string message) //sends irc message
         {
 
             try
@@ -56,12 +55,13 @@ namespace Blide
             }
             catch (Exception ex)
             {
-                MessageBox.Show("an IRC error occured in function SendIrcMessage and Blide has been stopped. Error:" + ex.Message);
-                settings.restartApplication();
+                ReportError("an IRC error occured in function SendIrcMessage and Blide has been stopped. Error:" + ex.Message);
+
+
             }
         }
 
-        public void SendPublicChatMessage(string message)
+        public void SendPublicChatMessage(string message) //builds irc message
         {
             try
             {
@@ -70,12 +70,12 @@ namespace Blide
             }
             catch (Exception ex)
             {
-                MessageBox.Show("an IRC error occured in function SendPublicChatMessage and Blide has been stopped. Error:" + ex.Message);
-                settings.restartApplication();
+                ReportError("an IRC error occured in function SendPublicChatMessage and Blide has been stopped. Error:" + ex.Message);
+
             }
         }
 
-        public string ReadMessage()
+        public string ReadMessage() //chat reader using irc
         {
             try
             {
@@ -84,14 +84,15 @@ namespace Blide
             }
             catch (Exception ex)
             {
-                MessageBox.Show("an IRC error occured in function ReadMessage and Blide has been stopped. Error:" + ex.Message);
+                ReportError("an IRC error occured in function ReadMessage and Blide has been stopped. Error:" + ex.Message);
                 return "Error receiving message: " + ex.Message;
             }
         }
 
-        private void ReportError(string error)
+        private void ReportError(string error) //reports errors
         {
-            WebClient client = new WebClient();
+
+            WebClient client = new WebClient(); //reports error to blide api
             try
             {
                 string apirequest = client.DownloadString("http://api.blideapp.de/blidestats.php?channel=" + settings.getChannelNames() + "&errorlog=" + error);
@@ -99,8 +100,10 @@ namespace Blide
                 {
                     MessageBox.Show("Blide API error: " + apirequest);
                 }
+
+
             }
-            catch (WebException ex)
+            catch (WebException ex) //if api fails
             {
                 String responseFromServer = ex.Message.ToString() + " ";
                 if (ex.Response != null)
@@ -116,7 +119,9 @@ namespace Blide
                 }
                 MessageBox.Show("Blide API not reachable - error: " + responseFromServer);
             }
+            MessageBox.Show(error); //messagebox with error
+            settings.restartApplication(); //restarts blide if clicked OK
         }
-        
-}
+
+    }
 }

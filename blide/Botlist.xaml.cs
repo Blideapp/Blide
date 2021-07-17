@@ -10,7 +10,10 @@ using Path = System.IO.Path;
 namespace Blide
 {
     /* 
-
+    This tool lets you create botlists easier 
+    
+    Notes:
+    --------------------------
     remove:
     uhrzeit 
     Prime Gaming
@@ -26,8 +29,9 @@ namespace Blide
     Chatterino:
     between 00:00 and next :
     -> :xxSTRING:
+    ---------------------------
 */
-    
+
     public partial class Botlist : UserControl
     {
 
@@ -35,7 +39,7 @@ namespace Blide
         Boolean useTimestamps = false;
         Boolean chatterino = false;
         string clipboardtext = "";
-        string[] emotes = new string[] {"PrideShrug", "PrideFloat", "PridePog", "PrideCute", "PrideLaugh", "PrideUwu", "PrideWave", "PrideUnicorn", "PrideDragon", "PrideToucan", "PrideLGBTea", "PridePenguin", "PrideFlower", "PrideLion", "PrideHeartR", "PrideHeartL", "PrideRise", "PrideWorld", "PrideCrown", "PrideKoala", "PrideHeyyy", "PrideLove", "PrideStrong", "PridePaint", "HyperTiger", "HyperLost", "HyperCrate", "HyperCooldown", "HyperJump", "HyperSlam", "HyperReveal", "HyperHex", "HyperCheese", "HyperParkour", "HyperHaste", "HyperMine", "HyperGravity", "HyperMayhem", "HyperCrown", "KPOPselfie", "KPOPTT", "KPOPmerch", "KPOPvictory", "KPOPheart", "KPOPlove", "KPOPglow", "KPOPfan", "KPOPdance", "KPOPcheer", "HypeSideeye", "SirUwU", "SirPrise", "SirSad", "SirMad", "SirSword", "SirShield", "ALLINTOVOTE", "ShowOfHands", "FootGoal", "FootYellow", "FootBall", "BlackLivesMatter", "SingsMic", "SingsNote", "PorscheWIN", "BOP", "VirtualHug", "ExtraLife", "TwitchSings", "SoonerLater", "HolidayTree", "HolidaySanta", "HolidayPresent", "HolidayOrnament", "FBChallenge", "FBPenalty", "PixelBob", "GunRun", "HolidayCookie", "HolidayLog", "FBCatch", "FBBlock", "FBSpiral", "FBPass", "FBRun", "GenderFluidPride", "NonBinaryPride", "MaxLOL", "IntersexPride", "TwitchRPG", "PansexualPride", "AsexualPride", "MercyWing2", "PinkMercy", "BisexualPride", "LesbianPride", "GayPride", "TransgenderPride", "MercyWing1", "PartyHat", "EarthDay", "TombRaid", "PopCorn", "FBtouchdown", "PurpleStar", "GreenTeam", "RedTeam", "TPFufun", "TwitchVotes", "DarkMode", "HSWP", "TPcrunchyroll", "HSCheers", "TwitchUnity", "PowerUpL", "Squid4", "PowerUpR", "Squid3", "LUL", "Squid2", "EntropyWins", "Squid1", "SabaPing", "BegWan", "BigPhish", "TearGlove", "TehePelo", "InuyoFace", "TwitchLit", "Kappu", "CarlSmile", "KonCha", "CrreamAwk", "PunOko", "ThankEgg", "PartyTime", "MorphinTime", "RlyTho", "TheIlluminati", "UWot", "TBAngel", "YouDontSay", "MVGame", "KAPOW", "NinjaGrumpy", "ItsBoshyTime", "CoolStoryBob", "TriHard", "SuperVinlin", "FreakinStinkin", "Poooound", "CurseLit", "UncleNox", "RaccAttack", "StrawBeary", "PrimeMe", "BrainSlug", "BatChest", "WTRuck", "TooSpicy", "Jebaited", "DogFace", "BlargNaut", "TakeNRG", "DatSheffy", "UnSane", "copyThis", "pastaThat", "imGlitch", "GivePLZ", "TheTarFu", "PicoMause", "TinyFace", "DrinkPurple", "DxCat", "RuleFive", "FutureMan", "OpieOP", "DoritosChip", "PJSugar", "VoteYea", "VoteNay", "ChefFrank", "StinkyCheese", "NomNom", "SmoocherZ", "cmonBruh", "KappaWealth", "OhMyDog", "OSFrog", "SeriousSloth", "KomodoHype", "VoHiYo", "MikeHogu", "KappaClaus", "KappaRoss", "MingLee", "SeemsGood", "twitchRaid", "KappaPride", "bleedPurple", "CoolCat", "DendiFace", "NotLikeThis", "riPepperonis", "duDudu", "ShadyLulu", "ArgieB8", "CorgiDerp", "PraiseIt", "TTours", "mcaT", "BuddhaBar", "WutFace", "PRChase", "Mau5", "HeyGuys", "NotATK", "PermaSmug", "panicBasket", "BabyRage", "HassaanChop", "TheThing", "EleGiggle", "EleGiggle", "PanicVis", "ANELE", "BrokeBack", "PipeHype", "YouWHY", "RitzMitz", "GrammarKing", "RalpherZ", "TF2John", "SoBayed", "ThunBeast", "BigBrother", "WholeWheat", "Keepo", "DAESuppy", "Kippa", "FailFish", "PogChamp", "OneHand", "PMSTwin", "FUNgineer", "DBstyle", "AsianGlow", "ResidentSleeper", "4Head", "BibleThump", "HotPokket", "ShazBotstix", "FrankerZ", "SMOrc", "ArsonNoSexy", "PunchTrees", "SSSsss", "Kreygasm", "KevinTurtle", "PJSalt", "SwiftRage", "DansGame", "GingerPower", "BCWarrior", "StoneLightning", "TheRinger", "RedCoat", "Kappa", "JonCarnage", "MrDestructoid", "OptimizePrime", "JKanStyle", "PedoBear", "RebeccaBlack", "CiGrip", "DatSauce", "ForeverAlone", "GabeN", "HailHelix", "HerbPerve", "iDog", "rStrike", "ShoopDaWhoop", "SwedSwag", "M&Mjc", "bttvNice", "TopHam", "TwaT", "WatChuSay", "SavageJerky", "Zappa", "tehPoleCat", "AngelThump", "HHydro", "TaxiBro", "BroBalt", "ButterSauce", "BaconEffect", "SuchFraud", "CandianRage", "She'llBeRight", "D:", "VisLaud", "KaRappa", "YetiZ", "miniJulia", "FishMoley", "Hhhehehe", "KKona", "PoleDoge", "sosGame", "CruW", "RarePepe", "iamsocal", "haHAA", "FeelsBirthdayMan", "RonSmug", "KappaCool", "FeelsBadMan", "BasedGod", "bUrself", "ConcernDoge", "FeelsGoodMan", "FireSpeed", "NaM", "SourPls", "LuL", "SaltyCorn", "FCreep", "monkaS", "VapeNation", "ariW", "notsquishY", "FeelsAmazingMan", "DuckerZ", "FeelsPumpkinMan", "SqShy", "Wowee", "WubTF", "cvR", "cvL", "cvHazmat", "cvMask" };
+        string[] emotes = new string[] { "PrideShrug", "PrideFloat", "PridePog", "PrideCute", "PrideLaugh", "PrideUwu", "PrideWave", "PrideUnicorn", "PrideDragon", "PrideToucan", "PrideLGBTea", "PridePenguin", "PrideFlower", "PrideLion", "PrideHeartR", "PrideHeartL", "PrideRise", "PrideWorld", "PrideCrown", "PrideKoala", "PrideHeyyy", "PrideLove", "PrideStrong", "PridePaint", "HyperTiger", "HyperLost", "HyperCrate", "HyperCooldown", "HyperJump", "HyperSlam", "HyperReveal", "HyperHex", "HyperCheese", "HyperParkour", "HyperHaste", "HyperMine", "HyperGravity", "HyperMayhem", "HyperCrown", "KPOPselfie", "KPOPTT", "KPOPmerch", "KPOPvictory", "KPOPheart", "KPOPlove", "KPOPglow", "KPOPfan", "KPOPdance", "KPOPcheer", "HypeSideeye", "SirUwU", "SirPrise", "SirSad", "SirMad", "SirSword", "SirShield", "ALLINTOVOTE", "ShowOfHands", "FootGoal", "FootYellow", "FootBall", "BlackLivesMatter", "SingsMic", "SingsNote", "PorscheWIN", "BOP", "VirtualHug", "ExtraLife", "TwitchSings", "SoonerLater", "HolidayTree", "HolidaySanta", "HolidayPresent", "HolidayOrnament", "FBChallenge", "FBPenalty", "PixelBob", "GunRun", "HolidayCookie", "HolidayLog", "FBCatch", "FBBlock", "FBSpiral", "FBPass", "FBRun", "GenderFluidPride", "NonBinaryPride", "MaxLOL", "IntersexPride", "TwitchRPG", "PansexualPride", "AsexualPride", "MercyWing2", "PinkMercy", "BisexualPride", "LesbianPride", "GayPride", "TransgenderPride", "MercyWing1", "PartyHat", "EarthDay", "TombRaid", "PopCorn", "FBtouchdown", "PurpleStar", "GreenTeam", "RedTeam", "TPFufun", "TwitchVotes", "DarkMode", "HSWP", "TPcrunchyroll", "HSCheers", "TwitchUnity", "PowerUpL", "Squid4", "PowerUpR", "Squid3", "LUL", "Squid2", "EntropyWins", "Squid1", "SabaPing", "BegWan", "BigPhish", "TearGlove", "TehePelo", "InuyoFace", "TwitchLit", "Kappu", "CarlSmile", "KonCha", "CrreamAwk", "PunOko", "ThankEgg", "PartyTime", "MorphinTime", "RlyTho", "TheIlluminati", "UWot", "TBAngel", "YouDontSay", "MVGame", "KAPOW", "NinjaGrumpy", "ItsBoshyTime", "CoolStoryBob", "TriHard", "SuperVinlin", "FreakinStinkin", "Poooound", "CurseLit", "UncleNox", "RaccAttack", "StrawBeary", "PrimeMe", "BrainSlug", "BatChest", "WTRuck", "TooSpicy", "Jebaited", "DogFace", "BlargNaut", "TakeNRG", "DatSheffy", "UnSane", "copyThis", "pastaThat", "imGlitch", "GivePLZ", "TheTarFu", "PicoMause", "TinyFace", "DrinkPurple", "DxCat", "RuleFive", "FutureMan", "OpieOP", "DoritosChip", "PJSugar", "VoteYea", "VoteNay", "ChefFrank", "StinkyCheese", "NomNom", "SmoocherZ", "cmonBruh", "KappaWealth", "OhMyDog", "OSFrog", "SeriousSloth", "KomodoHype", "VoHiYo", "MikeHogu", "KappaClaus", "KappaRoss", "MingLee", "SeemsGood", "twitchRaid", "KappaPride", "bleedPurple", "CoolCat", "DendiFace", "NotLikeThis", "riPepperonis", "duDudu", "ShadyLulu", "ArgieB8", "CorgiDerp", "PraiseIt", "TTours", "mcaT", "BuddhaBar", "WutFace", "PRChase", "Mau5", "HeyGuys", "NotATK", "PermaSmug", "panicBasket", "BabyRage", "HassaanChop", "TheThing", "EleGiggle", "EleGiggle", "PanicVis", "ANELE", "BrokeBack", "PipeHype", "YouWHY", "RitzMitz", "GrammarKing", "RalpherZ", "TF2John", "SoBayed", "ThunBeast", "BigBrother", "WholeWheat", "Keepo", "DAESuppy", "Kippa", "FailFish", "PogChamp", "OneHand", "PMSTwin", "FUNgineer", "DBstyle", "AsianGlow", "ResidentSleeper", "4Head", "BibleThump", "HotPokket", "ShazBotstix", "FrankerZ", "SMOrc", "ArsonNoSexy", "PunchTrees", "SSSsss", "Kreygasm", "KevinTurtle", "PJSalt", "SwiftRage", "DansGame", "GingerPower", "BCWarrior", "StoneLightning", "TheRinger", "RedCoat", "Kappa", "JonCarnage", "MrDestructoid", "OptimizePrime", "JKanStyle", "PedoBear", "RebeccaBlack", "CiGrip", "DatSauce", "ForeverAlone", "GabeN", "HailHelix", "HerbPerve", "iDog", "rStrike", "ShoopDaWhoop", "SwedSwag", "M&Mjc", "bttvNice", "TopHam", "TwaT", "WatChuSay", "SavageJerky", "Zappa", "tehPoleCat", "AngelThump", "HHydro", "TaxiBro", "BroBalt", "ButterSauce", "BaconEffect", "SuchFraud", "CandianRage", "She'llBeRight", "D:", "VisLaud", "KaRappa", "YetiZ", "miniJulia", "FishMoley", "Hhhehehe", "KKona", "PoleDoge", "sosGame", "CruW", "RarePepe", "iamsocal", "haHAA", "FeelsBirthdayMan", "RonSmug", "KappaCool", "FeelsBadMan", "BasedGod", "bUrself", "ConcernDoge", "FeelsGoodMan", "FireSpeed", "NaM", "SourPls", "LuL", "SaltyCorn", "FCreep", "monkaS", "VapeNation", "ariW", "notsquishY", "FeelsAmazingMan", "DuckerZ", "FeelsPumpkinMan", "SqShy", "Wowee", "WubTF", "cvR", "cvL", "cvHazmat", "cvMask" };
         public Botlist()
         {
             InitializeComponent();
@@ -91,7 +95,7 @@ namespace Blide
                         i = i + 5;
 
                     }
-                    if(numbers.Contains(temp[i]) && temp[i + 1] == ':' && numbers.Contains(temp[i + 2]) && numbers.Contains(temp[i + 3])) //if z:zz -> danach name bis :
+                    if (numbers.Contains(temp[i]) && temp[i + 1] == ':' && numbers.Contains(temp[i + 2]) && numbers.Contains(temp[i + 3])) //if z:zz -> danach name bis :
                     {
                         int j = i + 5;
                         while (temp[j] != ':')
@@ -170,7 +174,7 @@ namespace Blide
                         {
                             lines[i] = getAfter(lines[i], toRemove[r]);
                         }
-                        
+
                         if (lines[i].Contains(":"))
                         {
                             lines[i] = lines[i].Substring(0, lines[i].IndexOf(":", 0)); // clear everything after :
@@ -178,14 +182,16 @@ namespace Blide
                     }
                 }
 
-                
+
                 for (int j = 0; j < lines.Length; j++)
                 {
-                    if(lines[j] != "" && lines[j] != null) {
-                    if (emotes.Contains(lines[j]) || emotes.Contains(lines[j].Remove(0, 1)) || emotes.Contains(lines[j].Remove(lines[j].Length - 1)))
+                    if (lines[j] != "" && lines[j] != null)
                     {
-                        lines[j] = "";
-                    }}
+                        if (emotes.Contains(lines[j]) || emotes.Contains(lines[j].Remove(0, 1)) || emotes.Contains(lines[j].Remove(lines[j].Length - 1)))
+                        {
+                            lines[j] = "";
+                        }
+                    }
                     stringBuilder = stringBuilder + lines[j] + ";";
 
                 }
@@ -263,7 +269,9 @@ namespace Blide
             saveFileDialog.FileName = "" + DateTime.Now.ToString(@"MM.dd.yyyy") + "_" + broadcaster + "_" + "botlist";
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             if (
-                saveFileDialog.ShowDialog() == true) { File.WriteAllText(saveFileDialog.FileName, usernamesfinal);
+                saveFileDialog.ShowDialog() == true)
+            {
+                File.WriteAllText(saveFileDialog.FileName, usernamesfinal);
                 wnd.import("" + saveFileDialog.FileName);
             }
 
@@ -284,6 +292,6 @@ namespace Blide
             }
         }
 
-        
+
     }
 }

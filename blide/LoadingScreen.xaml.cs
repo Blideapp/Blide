@@ -5,7 +5,7 @@ using System.Windows.Controls;
 namespace Blide
 {
     /// <summary>
-    /// Interaction logic for LoadingScreen.xaml
+    /// Loading screen to cover up bad ui build up
     /// </summary>
     public partial class LoadingScreen : UserControl
     {
@@ -27,7 +27,7 @@ namespace Blide
 
             }
         }
-        public async void loadingScreen()
+        public async void loadingScreen() //yes this is a hard coded animation. Has nothing to do with real loading time but makes the app feel better
         {
             LoadingBarRectangle.Width = 1;
             await Task.Delay(69);

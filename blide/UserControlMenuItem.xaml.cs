@@ -6,7 +6,7 @@ using System.Windows.Input;
 namespace Blide
 {
     /// <summary>
-    /// Interaction logic for UserControlMenuItem.xaml
+    /// Improves UI/UX
     /// </summary>
     public partial class UserControlMenuItem : UserControl
     {

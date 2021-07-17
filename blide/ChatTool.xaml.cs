@@ -3,15 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Interop;
 
 
 namespace Blide
@@ -23,7 +20,7 @@ namespace Blide
         SettingsManager settings = new SettingsManager();
         public static string runAnyways = "";
 
-        static List<Object> objlist = new List<Object>(); //irc clients
+        static List<IrcClient> ircclientlist = new List<IrcClient>(); //irc clients
         static List<string> channelNames = new List<string>(); //streamer names
         List<string> paths = new List<string>(); //file paths
         static WebClient client = new WebClient();
@@ -105,8 +102,12 @@ namespace Blide
         }
         private async void countdown()
         {
-            CanRun = false;
+            CanRun = true;
             startIrc();
+            dc.ConsoleOutput.Add("starting");
+            await Task.Delay(100);
+            run();
+            StartBotUsage = true;
             /*
             if (isLive())
             {
@@ -130,24 +131,20 @@ namespace Blide
             }
             else
             {*/
-            dc.ConsoleOutput.Add("starting");
-            await Task.Delay(100);
-            CanRun = true;
-            run();
-            StartBotUsage = true;
+
             //}
         }
 
 
         private async void run()
         {
-            
+
 
             if (settings.getSettingsExist())
             {
                 if (settings.getJoinMessage()) { TwitchLib(); }
 
-
+                string prefix = settings.getPrefix();
                 foreach (String item in paths)
                 {
                     string[] lines = File.ReadAllLines(item);
@@ -157,14 +154,13 @@ namespace Blide
                     {
                         if (CanRun)
                         {
-
-                            foreach (IrcClient sender in objlist)
+                            string temp = prefix + lines[i] + "";
+                            foreach (IrcClient ircclient in ircclientlist)
                             {
-                                sender.SendPublicChatMessage(settings.getPrefix() + lines[i] + "");
-                                await Task.Delay(10);
+                                ircclient.SendPublicChatMessage(temp);
+                                await Task.Delay(settings.getDelay());
                             }
 
-                            await Task.Delay(settings.getDelay());
                         }
 
                         else
@@ -184,7 +180,7 @@ namespace Blide
                         MessageBox.Show("Blide API error: " + apirequest);
                     }
                 }
-                catch(WebException ex)
+                catch (WebException ex)
                 {
                     String responseFromServer = ex.Message.ToString() + " ";
                     if (ex.Response != null)
@@ -197,7 +193,7 @@ namespace Blide
                                 responseFromServer += reader.ReadToEnd();
                             }
                         }
-                    }                   
+                    }
                     MessageBox.Show("Blide API not reachable - error: " + responseFromServer);
                 }
 
@@ -214,8 +210,10 @@ namespace Blide
         }
         private async void TwitchLib()
         {
-            foreach (IrcClient sender in objlist)
+
+            foreach (IrcClient sender in ircclientlist)
             {
+
                 sender.SendPublicChatMessage("Blide initialized - everything is working properly");
                 await Task.Delay(300);
             }
@@ -244,11 +242,7 @@ namespace Blide
 
         protected void startIrc()
         {
-            if (settings.getSettingsExist() || settings.getSettingsIsEmpty())
-            {
-                dc.ConsoleOutput.Add("missing settings file or parts of settings are empty");
-
-            }
+            
 
             if (!settings.getSettingsIsEmpty() && settings.getSettingsExist())
             {
@@ -260,12 +254,18 @@ namespace Blide
                     channelNames.Add(item);
                 }
                 dc.ConsoleOutput.Add("found settings - connecting to: ");
+
                 foreach (string obj in channelNames)
                 {
-                    objlist.Add(new IrcClient("irc.twitch.tv", 6667, settings.getBotName(), settings.getTwitchOAuth(), obj));
+                    ircclientlist.Add(new IrcClient("irc.twitch.tv", 6667, settings.getBotName(), settings.getTwitchOAuth(), obj));
                     dc.ConsoleOutput.Add(obj + "");
                 }
 
+
+            }
+            else
+            {
+                dc.ConsoleOutput.Add("missing settings file or parts of settings are empty");
             }
 
         }

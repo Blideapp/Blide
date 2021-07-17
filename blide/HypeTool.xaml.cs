@@ -1,39 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Text.RegularExpressions;
-using Microsoft.Win32;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.IO;
-using System.Net;
-using System.Runtime.InteropServices;
-using System.Windows.Interop;
 
 namespace Blide
 {
     /// <summary>
-    /// Interaction logic for HypeTool.xaml
+    /// Interaction logic for HypeTool. Making hype in chat easy
     /// </summary>
     public partial class HypeTool : UserControl
     {
+        //default values
         int amount = 1;
         int interval = 1;
         bool startStatus = false;
-        MainWindow wnd = (MainWindow)Application.Current.MainWindow;
-        SettingsManager settings = new SettingsManager();
-        private static string twitchChannel= "";        
-        private static Boolean  canRun = false; // hypetool runable
+
+        MainWindow wnd = (MainWindow)Application.Current.MainWindow; //mainwindow
+        SettingsManager settings = new SettingsManager(); // access settings
+        private static string twitchChannel = "";
+        private static Boolean canRun = false; // hypetool runable
         private string emoteline = "";
         private int messageDelay = 1000;
         private int messagesSent = 0;
@@ -45,10 +33,10 @@ namespace Blide
 
         public HypeTool()
         {
-            InitializeComponent();            
+            InitializeComponent();
 
             amountText.Text = amount + "";
-
+            // use workers to read chat and spam at the same time
             Readworker.DoWork += Readworker_DoWork;
             Readworker.RunWorkerCompleted += Readworker_RunWorkerCompleted;
             Spamworker.DoWork += Spamworker_DoWork;
@@ -84,7 +72,7 @@ namespace Blide
 
         private void amountButtonDec_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if(Int32.Parse(amountText.Text) > 1)
+            if (Int32.Parse(amountText.Text) > 1)
             {
                 amountText.Text = Int32.Parse(amountText.Text) - 1 + "";
             }
@@ -130,21 +118,23 @@ namespace Blide
         {
             canRun = false;
             Readworker.CancelAsync();
+            Spamworker.CancelAsync();
             this.startBot1.Content = "Start";
             startStatus = false;
         }
 
         private async void run()
         {
+
             useRandomDelay = randomizeButton.getStatus();
             canRun = true;
             twitchChannel = Channel.Text;
             emoteline = Content.Text + " ";
             string emotetemp;
-            for(int i = 0; i < Int32.Parse(amountText.Text) -1; i++) // stringbuilder for message
+            for (int i = 0; i < Int32.Parse(amountText.Text) - 1; i++) // stringbuilder for message
             {
                 emotetemp = emoteline;
-                if((emotetemp + Content.Text + " ").Length < 500)
+                if ((emotetemp + Content.Text + " ").Length < 500)
                 {
                     emoteline += Content.Text + " ";
                 }
@@ -154,19 +144,23 @@ namespace Blide
             {
                 Readworker.RunWorkerAsync();
             }
-            
+
             Spamworker.RunWorkerAsync();
 
             UpdateMessageCount();
 
-            
+
 
             //countdown
 
-            int minutes = 1;
-            int seconds = 50;
-            for(int i = 0; i <= 120; i++)
+            int minutes = 0;
+            int seconds = 0;
+            for (int i = 0; i <= 120; i++)
             {
+                if (!canRun)
+                {
+                    break;
+                }
                 if (seconds >= 59)
                 {
                     seconds = 0;
@@ -178,20 +172,20 @@ namespace Blide
                 }
 
                 string secondsstring = seconds + "";
-                if(seconds < 10) // 1:2 -> 1:02
+                if (seconds < 10) // 1:2 -> 1:02
                 {
                     secondsstring = "0" + secondsstring;
                 }
 
                 timerLabel.Content = minutes + ":" + secondsstring;
                 await Task.Delay(1000);
-            }            
+            }
             canRun = false;
             stop();
             startStatus = false;
             timerLabel.Content = "00:00";
         }
-        
+
         public async void UpdateMessageCount()
         {
             while (canRun)
@@ -203,7 +197,7 @@ namespace Blide
 
         private void Readworker_DoWork(object sender, DoWorkEventArgs e)
         {
-            IrcClient irc = new IrcClient("irc.twitch.tv", 6667,settings.getBotName(), settings.getTwitchOAuth(), twitchChannel);
+            IrcClient irc = new IrcClient("irc.twitch.tv", 6667, settings.getBotName(), settings.getTwitchOAuth(), twitchChannel);
 
             while (canRun)
             {
@@ -222,14 +216,14 @@ namespace Blide
                     // General commands anyone can use
                     if (message.Equals("!BlideStop", StringComparison.OrdinalIgnoreCase) || message.Equals("!stop", StringComparison.OrdinalIgnoreCase) || message.Equals("BlideStop", StringComparison.OrdinalIgnoreCase))
                     {
-                        
+
                         Readworker.CancelAsync();
                         canRun = false;
                         if (sendStopConfirmation)
                         {
                             irc.SendPublicChatMessage("stopped");
                         }
-                        
+
                     }
                 }
 
@@ -239,7 +233,8 @@ namespace Blide
 
         }
 
-        private void Readworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e){
+        private void Readworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
             stop();
         }
 
@@ -250,7 +245,7 @@ namespace Blide
 
             while (canRun)
             {
-                if(emoteline != null && emoteline.Length <= 500 && canRun)
+                if (emoteline != null && emoteline.Length <= 500 && canRun)
                 {
                     irc.SendPublicChatMessage(emoteline);
                     messagesSent++;
@@ -265,15 +260,15 @@ namespace Blide
                 {
                     await Task.Delay(messageDelay);
                 }
-                
+
             }
         }
-        private void Spamworker_RunWorkerCompleted(object sender,RunWorkerCompletedEventArgs e)
+        private void Spamworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             //update ui once worker complete his work
         }
 
-        
+
     }
 
 }
